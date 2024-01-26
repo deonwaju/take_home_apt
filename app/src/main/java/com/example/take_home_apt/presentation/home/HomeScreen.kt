@@ -29,7 +29,6 @@ fun HomeScreen(
         Spacer(modifier = Modifier.height(ExtraSmallPadding2))
         TrackingCard()
         Spacer(modifier = Modifier.height(ExtraSmallPadding2))
-
         AvailableVehiclesList()
     }
 }

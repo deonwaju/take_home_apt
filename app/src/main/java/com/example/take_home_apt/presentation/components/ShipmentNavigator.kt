@@ -48,39 +48,40 @@ fun ShipmentNavigator() {
     }
 
     val isBottomBarVisible = remember(key1 = backStackState) {
-        backStackState?.destination?.route == Route.HomeScreen.route ||
-                backStackState?.destination?.route == Route.CalculateScreen.route ||
-                backStackState?.destination?.route == Route.ShipmentScreen.route
+        backStackState?.destination?.route == Route.HomeScreen.route
     }
 
+    Scaffold(
+        modifier = Modifier.fillMaxSize(),
+        bottomBar = {
+            if (isBottomBarVisible) {
+                    NewsBottomNavigation(
+                        items = bottomNavigationItem,
+                        selectedItem = selectedItem,
+                        onItemClick = { index ->
+                            when (index) {
+                                0 -> navigateToTab(
+                                    navController = navController,
+                                    route = Route.HomeScreen.route
+                                )
 
-    Scaffold(modifier = Modifier.fillMaxSize(), bottomBar = {
-        if (isBottomBarVisible) {
-            NewsBottomNavigation(
-                items = bottomNavigationItem,
-                selectedItem = selectedItem,
-                onItemClick = { index ->
-                    when (index) {
-                        0 -> navigateToTab(
-                            navController = navController,
-                            route = Route.HomeScreen.route
-                        )
+                                1 -> navigateToTab(
+                                    navController = navController,
+                                    route = Route.CalculateScreen.route
+                                )
 
-                        1 -> navigateToTab(
-                            navController = navController,
-                            route = Route.CalculateScreen.route
-                        )
+                                2 -> navigateToTab(
+                                    navController = navController,
+                                    route = Route.ShipmentScreen.route
+                                )
 
-                        2 -> navigateToTab(
-                            navController = navController,
-                            route = Route.ShipmentScreen.route
-                        )
-                        3 -> println("Coming soon...")
-                    }
-                }
-            )
+                                3 -> println("Coming soon...")
+                            }
+                        }
+                    )
+            }
         }
-    }) {
+    ) {
         val bottomPadding = it.calculateBottomPadding()
         NavHost(
             navController = navController,

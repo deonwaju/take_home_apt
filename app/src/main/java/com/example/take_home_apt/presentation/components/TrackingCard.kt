@@ -11,9 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -26,10 +26,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.take_home_apt.R
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
+import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @Composable
@@ -50,22 +54,46 @@ fun TrackingCard(modifier: Modifier = Modifier) {
             Column(
                 modifier = Modifier.padding(SmallPadding1)
             ) {
-                Text(text = "Shipment Number")
-                Spacer(modifier = Modifier.height(SmallPadding1))
-                Text(text = "Shipment Number")
+                Text(
+                    text = "Shipment Number",
+                    color = Color.Gray,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Light
+                )
+                Spacer(modifier = Modifier.height(ExtraSmallPadding2))
+                Text(
+                    text = "NEJ20089934122231",
+                    fontFamily = FontFamily.SansSerif,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold
+                )
                 Spacer(modifier = Modifier.height(SmallPadding1))
                 Divider(modifier = Modifier.padding(vertical = ExtraSmallPadding))
                 Spacer(modifier = Modifier.height(SmallPadding1))
                 TrackingCardItems()
                 Divider(modifier = Modifier.padding(vertical = ExtraSmallPadding))
                 Spacer(modifier = Modifier.height(SmallPadding1))
-                Text(
-                    text = "Add Stop",
-                    textAlign = TextAlign.Center,
+                Row(
                     modifier = modifier
-                        .wrapContentSize(Alignment.Center)
-                        .fillMaxWidth()
-                )
+
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = null,
+                        tint = colorResource(id = R.color.orange) // Change the icon color
+                    )
+                    Text(
+                        text = "Add Stop",
+                        color = colorResource(id = R.color.orange),
+                        modifier = modifier,
+                        style = MaterialTheme.typography.titleMedium,
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
             }
         }
     }
@@ -94,16 +122,38 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
                     .padding(SmallPadding1)
                     .weight(1f)
             ) {
-                Text(text = "Sender")
-                Text(text = "Atlanta, 5243")
+                Text(
+                    text = "Sender",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Light
+                )
+                Text(
+                    text = "Atlanta, 5243",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
             Spacer(modifier = modifier.width(SmallPadding1))
             Column(
-                modifier = modifier.padding(ExtraSmallPadding)
+                modifier = modifier
+                    .padding(ExtraSmallPadding)
+                    .weight(1f)
 
             ) {
-                Text(text = "Time")
-                Text(text = "2 day - 3 days")
+                Text(
+                    text = "Time",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Light
+                )
+                Text(
+                    text = "2 day - 3 days",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
         }
         Row(
@@ -126,16 +176,37 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
                     .padding(SmallPadding1)
                     .weight(1f)
             ) {
-                Text(text = "Sender")
-                Text(text = "Atlanta, 5243")
+                Text(
+                    text = "Receiver",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Light
+                )
+                Text(
+                    text = "Chicago, 6342",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
             Spacer(modifier = modifier.width(SmallPadding1))
             Column(
-                modifier = modifier.padding(ExtraSmallPadding)
-
+                modifier = modifier
+                    .padding(ExtraSmallPadding)
+                    .weight(1f)
             ) {
-                Text(text = "Time")
-                Text(text = "2 day - 3 days")
+                Text(
+                    text = "Time",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.Light
+                )
+                Text(
+                    text = "Waiting to collect",
+                    style = MaterialTheme.typography.labelMedium,
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
         }
     }

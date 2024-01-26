@@ -30,15 +30,12 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
-import com.example.take_home_apt.utils.Dimens.MediumPadding1
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @Composable
 fun TrackingCard(modifier: Modifier = Modifier) {
 
-    Column(
-        modifier = modifier.padding(MediumPadding1)
-    ) {
+    Column {
         Text(text = "Tracking")
         Spacer(modifier = Modifier.height(SmallPadding1))
         Card(

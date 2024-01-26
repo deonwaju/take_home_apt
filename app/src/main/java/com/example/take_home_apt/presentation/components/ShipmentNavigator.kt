@@ -18,10 +18,10 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.take_home_apt.R
+import com.example.take_home_apt.presentation.components.navGraph.Route
 import com.example.take_home_apt.presentation.home.CalculateScreen
 import com.example.take_home_apt.presentation.home.HomeScreen
 import com.example.take_home_apt.presentation.home.ShipmentScreen
-import com.example.take_home_apt.presentation.components.navGraph.Route
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -98,12 +98,10 @@ fun ShipmentNavigator() {
                 )
             }
             composable(route = Route.CalculateScreen.route) {
-
                 OnBackClickStateSaver(navController = navController)
                 CalculateScreen()
             }
             composable(route = Route.ShipmentScreen.route) {
-
                 OnBackClickStateSaver(navController = navController)
                 ShipmentScreen()
             }

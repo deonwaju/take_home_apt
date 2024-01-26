@@ -29,7 +29,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.utils.Dimens.IconSizeMedium
-import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,7 +38,6 @@ fun TopAppBarComponent() {
         modifier = Modifier
             .fillMaxWidth()
             .height(IntrinsicSize.Min)
-            .padding(SmallPadding1)
     ) {
         Surface(
             modifier = Modifier

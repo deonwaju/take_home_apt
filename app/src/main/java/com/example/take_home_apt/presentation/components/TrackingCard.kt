@@ -40,7 +40,9 @@ import com.example.take_home_apt.utils.Dimens.SmallPadding1
 @Composable
 fun TrackingCard(modifier: Modifier = Modifier) {
 
-    Column {
+    Column (
+        modifier = modifier.padding(SmallPadding1)
+    ){
         Text(
             text = "Tracking",
             style = MaterialTheme.typography.titleLarge,
@@ -84,11 +86,11 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                         )
                     }
                     Image(
-                        painter = painterResource(id = R.drawable.ic_move_truck),
+                        painter = painterResource(id = R.drawable.ic_moving_vehicle),
                         contentDescription = "Truck",
                         modifier = Modifier
                             .size(Dimens.IconSizeLarge)
-                            .clip(MaterialTheme.shapes.medium),
+                            .clip(CircleShape),
                     )
                 }
                 Spacer(modifier = Modifier.height(SmallPadding1))
@@ -132,7 +134,7 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
         ) {
 
             Image(
-                painter = painterResource(id = R.drawable.ic_send), // Replace with your SVG resource ID
+                painter = painterResource(id = R.drawable.ic_send_box), // Replace with your SVG resource ID
                 contentDescription = null,
                 modifier = Modifier
                     .size(IconSizeMedium2)
@@ -185,7 +187,7 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.Absolute.SpaceBetween
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_receive), // Replace with your SVG resource ID
+                painter = painterResource(id = R.drawable.ic_receive_box), // Replace with your SVG resource ID
                 contentDescription = null,
                 modifier = Modifier
                     .size(IconSizeMedium2)

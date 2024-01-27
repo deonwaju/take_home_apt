@@ -1,6 +1,9 @@
 package com.example.take_home_apt.presentation.components
 
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -90,7 +93,9 @@ fun ShipmentNavigator() {
             startDestination = Route.HomeScreen.route,
             modifier = Modifier.padding(bottom = bottomPadding)
         ) {
-            composable(route = Route.HomeScreen.route) { backStackEntry ->
+            composable(
+                route = Route.HomeScreen.route,
+            ) { backStackEntry ->
                 HomeScreen(
                     navigateToSearch = {
                         navigateToTab(
@@ -100,15 +105,27 @@ fun ShipmentNavigator() {
                     }
                 )
             }
-            composable(route = Route.CalculateScreen.route) {
+            composable(
+                route = Route.CalculateScreen.route,
+                enterTransition = { -> slideInHorizontally(animationSpec = tween(500)) },
+                exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
+            ) {
                 OnBackClickStateSaver(navController = navController)
                 CalculateScreen()
             }
-            composable(route = Route.ShipmentScreen.route) {
+            composable(
+                route = Route.ShipmentScreen.route,
+                enterTransition = { -> slideInHorizontally(animationSpec = tween(500)) },
+                exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
+            ) {
                 OnBackClickStateSaver(navController = navController)
                 ShipmentScreen()
             }
-            composable(route = Route.SearchScreen.route) {
+            composable(
+                route = Route.SearchScreen.route,
+                enterTransition = { -> slideInHorizontally(animationSpec = tween(500)) },
+                exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
+            ) {
                 OnBackClickStateSaver(navController = navController)
                 SearchScreen(
                     onClick = {

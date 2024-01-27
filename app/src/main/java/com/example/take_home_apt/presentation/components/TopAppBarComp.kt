@@ -53,7 +53,7 @@ import com.example.take_home_apt.utils.Dimens.SmallPadding1
 @Composable
 fun TopAppBarComp(
     modifier: Modifier = Modifier,
-    navigateToSearch: () -> Unit,
+    onClick: () -> Unit,
     readOnly: Boolean = false
 ) {
     Column(
@@ -63,11 +63,11 @@ fun TopAppBarComp(
     ) {
         ProfileTab()
         SearcherBoxMe(
-            onClick = {
-                navigateToSearch()
-            },
             readOnly = readOnly,
-            onValueChanged = {}
+            onValueChanged = {},
+            onClick = {
+                onClick()
+            }
         )
     }
 }
@@ -165,7 +165,6 @@ fun SearcherBoxMe(
     onClick: (() -> Unit)? = null,
 ) {
     var searchText by remember { mutableStateOf(text) }
-    var searchResults by remember { mutableStateOf(emptyList<String>()) }
 
     val interactionSource = remember {
         MutableInteractionSource()
@@ -187,7 +186,7 @@ fun SearcherBoxMe(
             .fillMaxWidth()
             .border(
                 width = 1.dp,
-                color = Color.Transparent,
+                color = MaterialTheme.colorScheme.primary,
                 shape = MaterialTheme.shapes.extraLarge,
             )
             .padding(SmallPadding1)
@@ -219,7 +218,7 @@ fun SearcherBoxMe(
                     .clip(CircleShape),
             )
         },
-        shape = MaterialTheme.shapes.medium,
+        shape = MaterialTheme.shapes.extraLarge,
         colors = TextFieldDefaults.textFieldColors(
             containerColor = colorResource(id = R.color.input_background),
             focusedTextColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
@@ -230,10 +229,12 @@ fun SearcherBoxMe(
             unfocusedIndicatorColor = Color.Transparent,
         ),
         singleLine = true,
+        interactionSource = interactionSource
     )
 }
 
 @Composable
 @Preview(showBackground = true)
 fun TopAppBarCompScreenPreview() {
+    SearcherBoxMe(onValueChanged = {})
 }

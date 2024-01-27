@@ -70,7 +70,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     //Compose Navigation
-    val nav_version = "2.6.0"
+    val nav_version = "2.7.6"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
     //Dagger Hilt
@@ -89,4 +89,5 @@ dependencies {
 
     //Accompanist
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.16.1")
 }

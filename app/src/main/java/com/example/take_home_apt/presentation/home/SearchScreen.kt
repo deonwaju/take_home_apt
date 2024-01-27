@@ -140,7 +140,7 @@ fun SearchScreen(
                             .clip(CircleShape),
                     )
                 },
-                shape = MaterialTheme.shapes.medium,
+                shape = MaterialTheme.shapes.extraLarge,
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = colorResource(id = R.color.input_background),
                     focusedTextColor = if (isSystemInDarkTheme()) Color.White else Color.Black,

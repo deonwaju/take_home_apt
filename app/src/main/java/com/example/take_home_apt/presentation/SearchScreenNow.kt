@@ -16,6 +16,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -39,14 +41,15 @@ import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.models.ShippingItems
 import com.example.take_home_apt.utils.Dimens
+import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @Composable
-fun SearchScreenNow() {
+fun SearchScreenNow(modifier: Modifier = Modifier) {
     var searchText by remember { mutableStateOf("") }
     var searchResults by remember { mutableStateOf(emptyList<ShippingItems>()) }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
@@ -57,7 +60,7 @@ fun SearchScreenNow() {
                 searchResults = getMatchingResults(it)
             },
             label = { Text("Search") },
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
                 .padding(bottom = 16.dp),
             keyboardOptions = KeyboardOptions.Default.copy(
@@ -67,16 +70,30 @@ fun SearchScreenNow() {
                 Icon(
                     imageVector = Icons.Outlined.Search,
                     contentDescription = null,
-                    modifier = Modifier.size(24.dp)
+                    modifier = modifier.size(24.dp)
                 )
             }
         )
 
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = modifier.height(16.dp))
 
-        LazyColumn {
-            items(searchResults) { result ->
-                SearchResultItems(shippingItems = result)
+        if (searchText.isNotEmpty() && searchResults.isNotEmpty()) {
+            Card(
+                modifier = modifier
+                    .fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
+                shape = MaterialTheme.shapes.small,
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White
+                )
+            ) {
+                LazyColumn(
+                    modifier = modifier.padding(SmallPadding1)
+                ) {
+                    items(searchResults) { result ->
+                        SearchResultItems(shippingItems = result)
+                    }
+                }
             }
         }
     }

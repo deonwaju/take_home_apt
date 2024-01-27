@@ -1,9 +1,8 @@
 package com.example.take_home_apt.presentation.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
-import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -33,8 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.ui.theme.Take_home_aptTheme
+import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.IconSize
-import com.example.take_home_apt.utils.Dimens.IconSizeMedium
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -74,14 +73,12 @@ fun SearchBar(
                 )
             },
             trailingIcon = {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_scanner),
+                Image(
+                    painter = painterResource(id = R.drawable.ic_scanner2), // Replace with your SVG resource ID
                     contentDescription = null,
-                    modifier = Modifier.size(IconSizeMedium)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.primary)
-                        .clickable { /* Handle icon click */ },
-                    tint = colorResource(id = R.color.body)
+                    modifier = Modifier
+                        .size(Dimens.IconSizeMedium2)
+                        .clip(CircleShape),
                 )
             },
             placeholder = {

@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
+import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.IconSizeMedium2
@@ -59,20 +60,37 @@ fun TrackingCard(modifier: Modifier = Modifier) {
             Column(
                 modifier = Modifier.padding(SmallPadding1)
             ) {
-                Text(
-                    text = "Shipment Number",
-                    color = Color.Gray,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.Light
-                )
-                Spacer(modifier = Modifier.height(ExtraSmallPadding2))
-                Text(
-                    text = "NEJ20089934122231",
-                    fontFamily = FontFamily.SansSerif,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontWeight = FontWeight.Bold
-                )
+                Row(
+                    modifier = modifier
+                        .fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(
+                        modifier = modifier.weight(1f)
+                    ) {
+                        Text(
+                            text = "Shipment Number",
+                            color = Color.Gray,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontFamily = FontFamily.SansSerif,
+                            fontWeight = FontWeight.Light
+                        )
+                        Spacer(modifier = Modifier.height(ExtraSmallPadding2))
+                        Text(
+                            text = "NEJ20089934122231",
+                            fontFamily = FontFamily.SansSerif,
+                            style = MaterialTheme.typography.titleMedium,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_move_truck),
+                        contentDescription = "Truck",
+                        modifier = Modifier
+                            .size(Dimens.IconSizeLarge)
+                            .clip(MaterialTheme.shapes.medium),
+                    )
+                }
                 Spacer(modifier = Modifier.height(SmallPadding1))
                 Divider(modifier = Modifier.padding(vertical = ExtraSmallPadding))
                 Spacer(modifier = Modifier.height(SmallPadding1))

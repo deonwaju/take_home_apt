@@ -1,5 +1,10 @@
 package com.example.take_home_apt.presentation
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,11 +16,12 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.filled.KeyboardArrowLeft
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -24,14 +30,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -39,41 +48,81 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
+import com.example.take_home_apt.presentation.components.searchBar
 import com.example.take_home_apt.presentation.models.ShippingItems
 import com.example.take_home_apt.utils.Dimens
+import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @Composable
-fun SearchScreenNow(modifier: Modifier = Modifier) {
+fun SearchScreenNow(
+    modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
+) {
     var searchText by remember { mutableStateOf("") }
     var searchResults by remember { mutableStateOf(emptyList<ShippingItems>()) }
+
+    val interactionSource = remember {
+        MutableInteractionSource()
+    }
+    val isClicked = interactionSource.collectIsPressedAsState().value
+    LaunchedEffect(key1 = isClicked) {
+        if (isClicked) {
+            onClick?.invoke()
+        }
+    }
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(ExtraSmallPadding)
     ) {
-        OutlinedTextField(
-            value = searchText,
-            onValueChange = {
-                searchText = it
-                searchResults = getMatchingResults(it)
-            },
-            label = { Text("Search") },
+        Row(
             modifier = modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp),
-            keyboardOptions = KeyboardOptions.Default.copy(
-                imeAction = ImeAction.Done
-            ),
-            leadingIcon = {
-                Icon(
-                    imageVector = Icons.Outlined.Search,
-                    contentDescription = null,
-                    modifier = modifier.size(24.dp)
-                )
-            }
-        )
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Icon(
+                imageVector = Icons.Default.KeyboardArrowLeft,
+                contentDescription = null,
+                modifier = Modifier
+                    .size(Dimens.IconSizeMedium)
+                    .clip(MaterialTheme.shapes.medium)
+                    .padding(end = Dimens.ExtraSmallPadding2)
+            )
+            OutlinedTextField(
+                value = searchText,
+                onValueChange = {
+                    searchText = it
+                    searchResults = getMatchingResults(it)
+                },
+                label = { Text("Search") },
+                modifier = modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 16.dp)
+                    .searchBar(),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Done
+                ),
+                leadingIcon = {
+                    Icon(
+                        painter = painterResource(id = R.drawable.ic_search),
+                        contentDescription = null,
+                        modifier = Modifier.size(Dimens.IconSize),
+                        tint = colorResource(id = R.color.body)
+                    )
+                },
+                trailingIcon = {
+                    Image(
+                        painter = painterResource(id = R.drawable.ic_scanner2), // Replace with your SVG resource ID
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(Dimens.IconSizeMedium2)
+                            .clip(CircleShape),
+                    )
+                }
+            )
+        }
 
         Spacer(modifier = modifier.height(16.dp))
 
@@ -228,6 +277,18 @@ fun getMatchingResults(query: String): List<ShippingItems> {
     return data.map {
         it
     }.filter { it.name.contains(query, ignoreCase = true) }
+}
+
+fun Modifier.searchBar(): Modifier = composed {
+    if (!isSystemInDarkTheme()) {
+        border(
+            width = 1.dp,
+            color = Color.Black,
+            shape = MaterialTheme.shapes.extraLarge
+        )
+    } else {
+        this
+    }
 }
 
 @Composable

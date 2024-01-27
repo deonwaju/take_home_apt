@@ -15,6 +15,7 @@ object Dimens {
     val IndicatorSize = 14.dp
 
     val SmallIconSize = 11.dp
+    val IconSizeSmall = 8.dp
     val IconSize = 20.dp
     val IconSizeMedium = 30.dp
     val IconSizeMedium2 = 40.dp

@@ -3,11 +3,11 @@ package com.example.take_home_apt.presentation.components.navGraph
 sealed class Route(
     val route: String
 ) {
-    object HomeScreen: Route(route = "homeScreen")
-    object SearchScreen: Route(route = "searchScreen")
-    object CalculateScreen: Route(route = "calculateScreen")
-    object ShipmentScreen: Route(route = "shipmentScreen")
-    object DetailsScreen: Route(route = "detailsScreen")
-    object AppStartNavigation: Route(route = "appStartNavigation")
-    object ShipmentNavigation: Route(route = "shipmentNavigation")
+    data object HomeScreen: Route(route = "homeScreen")
+    data object SearchScreen: Route(route = "searchScreen")
+    data object CalculateScreen: Route(route = "calculateScreen")
+    data object ShipmentScreen: Route(route = "shipmentScreen")
+    data object DetailsScreen: Route(route = "detailsScreen")
+    data object AppStartNavigation: Route(route = "appStartNavigation")
+    data object ShipmentNavigation: Route(route = "shipmentNavigation")
 }

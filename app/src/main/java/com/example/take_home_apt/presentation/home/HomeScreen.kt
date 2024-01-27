@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.presentation.components.AvailableVehiclesList
-import com.example.take_home_apt.presentation.components.TopAppBarComponent
+import com.example.take_home_apt.presentation.components.TopAppBarComp
 import com.example.take_home_apt.presentation.components.TrackingCard
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
@@ -21,11 +21,13 @@ fun HomeScreen(
     navigateToSearch: () -> Unit,
 ) {
     Column (
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(SmallPadding1)
     ){
-        TopAppBarComponent(navigateToSearch)
+        TopAppBarComp(
+            navigateToSearch = navigateToSearch
+        )
         Spacer(modifier = Modifier.height(ExtraSmallPadding2))
         TrackingCard()
         Spacer(modifier = Modifier.height(ExtraSmallPadding2))

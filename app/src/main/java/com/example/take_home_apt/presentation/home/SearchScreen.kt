@@ -16,7 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -41,7 +41,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
@@ -62,7 +61,7 @@ fun SearchScreen(
     onClick: (() -> Unit)? = null,
 ) {
     var searchText by remember { mutableStateOf("") }
-    var searchResults by remember { mutableStateOf(emptyList<ShippingItems>()) }
+    var searchResults by remember { mutableStateOf(data()) }
 
     val interactionSource = remember {
         MutableInteractionSource()
@@ -157,22 +156,24 @@ fun SearchScreen(
 
         Spacer(modifier = modifier.height(16.dp))
 
-        if (searchText.isNotEmpty() && searchResults.isNotEmpty()) {
-            Card(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .padding(Dimens.SmallPadding1),
-                elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
-                shape = MaterialTheme.shapes.small,
-                colors = CardDefaults.cardColors(
-                    containerColor = Color.White
-                )
+        Card(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(Dimens.SmallPadding1),
+            elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
+            shape = MaterialTheme.shapes.small,
+            colors = CardDefaults.cardColors(
+                containerColor = Color.White
+            )
+        ) {
+            LazyColumn(
+                modifier = modifier.padding(Dimens.SmallPadding1)
             ) {
-                LazyColumn(
-                    modifier = modifier.padding(Dimens.SmallPadding1)
-                ) {
-                    items(searchResults) { result ->
-                        SearchResultItems(shippingItems = result)
+                itemsIndexed(searchResults) { index, result ->
+
+                    SearchResultItems(shippingItems = result)
+                    if (index < searchResults.size - 1) {
+                        Divider(modifier = Modifier.padding(vertical = Dimens.SmallPadding))
                     }
                 }
             }
@@ -213,8 +214,6 @@ fun SearchResultItems(modifier: Modifier = Modifier, shippingItems: ShippingItem
             )
         }
     }
-
-    Divider(modifier = Modifier.padding(vertical = Dimens.SmallPadding))
 }
 
 @Composable
@@ -278,6 +277,11 @@ fun DetailsWidget(
 }
 
 fun getMatchingResults(query: String): List<ShippingItems> {
+    return data().takeIf { query.isNotEmpty() }?.filter { it.name.contains(query, ignoreCase = true) }
+        ?: data()
+}
+
+fun data(): List<ShippingItems> {
     // Hardcoded data for demonstration
     val data = listOf(
         ShippingItems(
@@ -337,42 +341,14 @@ fun getMatchingResults(query: String): List<ShippingItems> {
             R.drawable.box_crop
         )
     )
-
-    return data.map {
-        it
-    }.filter { it.name.contains(query, ignoreCase = true) }
-}
-
-fun Modifier.searchBar(): Modifier = composed {
-    if (!isSystemInDarkTheme()) {
-        border(
-            width = 1.dp,
-            color = Color.Black,
-            shape = MaterialTheme.shapes.extraLarge
-        )
-    } else {
-        this
-    }
+    return data
 }
 
 @Composable
 @Preview(showBackground = true)
 fun PreviewSearchScreen() {
-    val result = ShippingItems("asda", "adasd", "asdasd", "asdasd", R.drawable.box_crop)
     Column(
     ) {
         SearchScreen()
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(Dimens.SmallPadding1),
-            elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
-            shape = MaterialTheme.shapes.small,
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            )
-        ) {
-            SearchResultItems(shippingItems = result)
-        }
     }
 }

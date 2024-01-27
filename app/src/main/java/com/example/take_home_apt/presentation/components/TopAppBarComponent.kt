@@ -72,7 +72,7 @@ fun TopAppBarComponent(
                                 .padding(start = 8.dp)
                         ) {
                             Text(
-                                text = "Your Location",
+                                text = "Your location",
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurface
                             )

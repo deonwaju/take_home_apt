@@ -4,19 +4,35 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.take_home_apt.presentation.SearchScreenNow
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.ui.Modifier
+import androidx.core.view.WindowCompat
+import com.example.take_home_apt.presentation.components.navGraph.NavGraph
+import com.example.take_home_apt.presentation.components.navGraph.Route
 import com.example.take_home_apt.ui.theme.Take_home_aptTheme
+import com.google.accompanist.systemuicontroller.SystemUiController
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        WindowCompat.setDecorFitsSystemWindows(window, true)
         setContent {
-            Take_home_aptTheme {
-                SearchScreenNow()
-//                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
-//                    NavGraph(startDestination = Route.ShipmentNavigation.route)
-//                }
+            val systemUiController: SystemUiController = rememberSystemUiController()
+
+            systemUiController.isStatusBarVisible = false // Status bar
+            systemUiController.isNavigationBarVisible = false // Navigation bar
+            systemUiController.isSystemBarsVisible = false //
+
+            setContent {
+                Take_home_aptTheme {
+                    Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
+                        NavGraph(startDestination = Route.ShipmentNavigation.route)
+                    }
+                }
             }
         }
     }

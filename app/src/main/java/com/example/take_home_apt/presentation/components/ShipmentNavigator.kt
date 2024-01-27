@@ -52,8 +52,6 @@ fun ShipmentNavigator() {
         backStackState?.destination?.route == Route.HomeScreen.route
     }
 
-    val enterScrollBehaviour = remember {}
-
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
@@ -112,7 +110,11 @@ fun ShipmentNavigator() {
             }
             composable(route = Route.SearchScreen.route) {
                 OnBackClickStateSaver(navController = navController)
-                SearchScreen()
+                SearchScreen(
+                    onClick = {
+                        navController.popBackStack()
+                    }
+                )
             }
         }
     }

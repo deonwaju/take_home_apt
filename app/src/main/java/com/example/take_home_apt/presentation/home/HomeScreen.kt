@@ -25,7 +25,7 @@ fun HomeScreen(
             .fillMaxSize()
             .padding(SmallPadding1)
     ){
-        TopAppBarComponent()
+        TopAppBarComponent(navigateToSearch)
         Spacer(modifier = Modifier.height(ExtraSmallPadding2))
         TrackingCard()
         Spacer(modifier = Modifier.height(ExtraSmallPadding2))

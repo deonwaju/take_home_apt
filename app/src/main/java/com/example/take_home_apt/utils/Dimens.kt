@@ -21,6 +21,6 @@ object Dimens {
 
     val VehicleCardSize = 96.dp
 
-    val VehicleImageHeight = 248.dp
+    val VehicleImageHeight = 150.dp
 
 }

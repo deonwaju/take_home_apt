@@ -23,7 +23,7 @@ import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.IconSize
 
 @Composable
-fun NewsBottomNavigation(
+fun ShipmentBottomNavigation(
     items: List<BottomNavigationItem>,
     selectedItem: Int,
     onItemClick: (Int) -> Unit

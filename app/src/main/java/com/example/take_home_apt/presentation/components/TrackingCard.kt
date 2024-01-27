@@ -1,6 +1,6 @@
 package com.example.take_home_apt.presentation.components
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -27,20 +26,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
-import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
+import com.example.take_home_apt.utils.Dimens.IconSizeMedium2
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @Composable
 fun TrackingCard(modifier: Modifier = Modifier) {
 
     Column {
-        Text(text = "Tracking")
+        Text(
+            text = "Tracking",
+            style = MaterialTheme.typography.titleLarge,
+            fontFamily = FontFamily.SansSerif,
+            fontWeight = FontWeight.Bold
+        )
         Spacer(modifier = Modifier.height(SmallPadding1))
         Card(
             modifier = Modifier
@@ -76,7 +81,6 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                 Spacer(modifier = Modifier.height(SmallPadding1))
                 Row(
                     modifier = modifier
-
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
@@ -88,7 +92,6 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                     Text(
                         text = "Add Stop",
                         color = colorResource(id = R.color.orange),
-                        modifier = modifier,
                         style = MaterialTheme.typography.titleMedium,
                         fontFamily = FontFamily.SansSerif,
                         fontWeight = FontWeight.SemiBold
@@ -109,13 +112,13 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Absolute.SpaceBetween
         ) {
-            Icon(
-                imageVector = Icons.Default.Notifications,
-                contentDescription = "Account Circle",
-                modifier = modifier
-                    .size(Dimens.IconSizeMedium2)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary)
+
+            Image(
+                painter = painterResource(id = R.drawable.ic_send), // Replace with your SVG resource ID
+                contentDescription = null,
+                modifier = Modifier
+                    .size(IconSizeMedium2)
+                    .clip(CircleShape),
             )
             Column(
                 modifier = modifier
@@ -163,13 +166,12 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Absolute.SpaceBetween
         ) {
-            Icon(
-                imageVector = Icons.Default.Notifications,
-                contentDescription = "Account Circle",
-                modifier = modifier
-                    .size(Dimens.IconSizeMedium2)
-                    .clip(CircleShape)
-                    .background(MaterialTheme.colorScheme.primary)
+            Image(
+                painter = painterResource(id = R.drawable.ic_receive), // Replace with your SVG resource ID
+                contentDescription = null,
+                modifier = Modifier
+                    .size(IconSizeMedium2)
+                    .clip(CircleShape),
             )
             Column(
                 modifier = modifier

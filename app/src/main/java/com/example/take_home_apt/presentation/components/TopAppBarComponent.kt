@@ -1,7 +1,6 @@
 package com.example.take_home_apt.presentation.components
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -26,13 +25,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.utils.Dimens.IconSizeMedium
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBarComponent() {
+fun TopAppBarComponent(
+    navigateToSearch: () -> Unit,
+) {
 
     Column(
         modifier = Modifier
@@ -62,7 +62,6 @@ fun TopAppBarComponent() {
                                 .size(IconSizeMedium)
                                 .clip(CircleShape)
                                 .background(MaterialTheme.colorScheme.primary)
-                                .clickable { /* Handle icon click */ }
                         )
 
                         // Text "your location" at the right of the profile picture
@@ -91,21 +90,18 @@ fun TopAppBarComponent() {
                                 .size(IconSizeMedium)
                                 .clip(CircleShape)
                                 .background(MaterialTheme.colorScheme.primary)
-                                .clickable { /* Handle icon click */ }
                         )
                     }
                 },
-
-                //        backgroundColor = MaterialTheme.colorScheme.surface,
-                //        elevation = 4.dp
             )
         }
-        SearchBar(text = "", onValueChange = {}, readOnly = false, onSearch = {})
+        SearchBar(
+            text = "",
+            onValueChange = {},
+            readOnly = true,
+            onSearch = {},
+            onClick = {
+                navigateToSearch()
+            })
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PreviewTopAppBarComponent() {
-    TopAppBarComponent()
 }

@@ -17,11 +17,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.models.AvailableVehicle
 import com.example.take_home_apt.utils.Dimens
+import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
+import com.example.take_home_apt.utils.Dimens.VehicleImageHeight
 
 val availableVehicles = listOf(
     AvailableVehicle("Ocean freight", "International", R.drawable.ship),
@@ -38,7 +41,11 @@ val availableVehicles = listOf(
 fun AvailableVehiclesList() {
 
     Column {
-        Text(text = "Available vehicles")
+        Text(text = "Available vehicles",
+            style = MaterialTheme.typography.titleLarge,
+            fontFamily = FontFamily.SansSerif,
+            fontWeight = FontWeight.Bold
+        )
         Spacer(modifier = Modifier.height(Dimens.SmallPadding1))
         LazyRow {
             items(availableVehicles.size) { i ->
@@ -56,9 +63,8 @@ fun AvailableVehiclesItem(modifier: Modifier = Modifier, vehicle: AvailableVehic
     Card(
         modifier = Modifier
             .padding(end = Dimens.SmallPadding1)
-            .height(150.dp)
-        ,
-        elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
+            .height(VehicleImageHeight),
+        elevation = CardDefaults.cardElevation(ExtraSmallPadding),
         shape = MaterialTheme.shapes.small,
         colors = CardDefaults.cardColors(
             containerColor = Color.White
@@ -67,15 +73,28 @@ fun AvailableVehiclesItem(modifier: Modifier = Modifier, vehicle: AvailableVehic
         Column(
             modifier = modifier
         ) {
-            Text(text = vehicle.name)
-            Text(text = vehicle.mode)
+            Text(
+                text = vehicle.name,
+                style = MaterialTheme.typography.labelSmall,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.SemiBold,
+                modifier = modifier
+                    .padding(ExtraSmallPadding)
+            )
+            Text(
+                text = vehicle.mode,
+                style = MaterialTheme.typography.labelSmall,
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.ExtraLight,
+                modifier = modifier
+                    .padding(start = ExtraSmallPadding)
+            )
         }
         Image(
             painter = imagePainter,
             contentDescription = "Mode",
             modifier = Modifier
                 .size(Dimens.VehicleCardSize)
-                .height(200.dp)
                 .clip(MaterialTheme.shapes.medium),
         )
     }

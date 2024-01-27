@@ -21,6 +21,7 @@ import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.components.navGraph.Route
 import com.example.take_home_apt.presentation.home.CalculateScreen
 import com.example.take_home_apt.presentation.home.HomeScreen
+import com.example.take_home_apt.presentation.home.SearchScreen
 import com.example.take_home_apt.presentation.home.ShipmentScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -55,30 +56,30 @@ fun ShipmentNavigator() {
         modifier = Modifier.fillMaxSize(),
         bottomBar = {
             if (isBottomBarVisible) {
-                    NewsBottomNavigation(
-                        items = bottomNavigationItem,
-                        selectedItem = selectedItem,
-                        onItemClick = { index ->
-                            when (index) {
-                                0 -> navigateToTab(
-                                    navController = navController,
-                                    route = Route.HomeScreen.route
-                                )
+                ShipmentBottomNavigation(
+                    items = bottomNavigationItem,
+                    selectedItem = selectedItem,
+                    onItemClick = { index ->
+                        when (index) {
+                            0 -> navigateToTab(
+                                navController = navController,
+                                route = Route.HomeScreen.route
+                            )
 
-                                1 -> navigateToTab(
-                                    navController = navController,
-                                    route = Route.CalculateScreen.route
-                                )
+                            1 -> navigateToTab(
+                                navController = navController,
+                                route = Route.CalculateScreen.route
+                            )
 
-                                2 -> navigateToTab(
-                                    navController = navController,
-                                    route = Route.ShipmentScreen.route
-                                )
+                            2 -> navigateToTab(
+                                navController = navController,
+                                route = Route.ShipmentScreen.route
+                            )
 
-                                3 -> println("Coming soon...")
-                            }
+                            3 -> println("Coming soon...")
                         }
-                    )
+                    }
+                )
             }
         }
     ) {
@@ -105,6 +106,10 @@ fun ShipmentNavigator() {
             composable(route = Route.ShipmentScreen.route) {
                 OnBackClickStateSaver(navController = navController)
                 ShipmentScreen()
+            }
+            composable(route = Route.SearchScreen.route) {
+                OnBackClickStateSaver(navController = navController)
+                SearchScreen()
             }
         }
     }

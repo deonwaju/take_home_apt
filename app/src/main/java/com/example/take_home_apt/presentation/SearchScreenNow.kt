@@ -6,7 +6,6 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,6 +19,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.KeyboardArrowLeft
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -50,6 +50,7 @@ import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.models.ShippingItems
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
+import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 
@@ -65,7 +66,7 @@ fun SearchScreenNow(
 
     Column(
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(ExtraSmallPadding)
     ) {
         Row(
@@ -77,7 +78,7 @@ fun SearchScreenNow(
                 imageVector = Icons.Default.KeyboardArrowLeft,
                 contentDescription = null,
                 modifier = Modifier
-                    .size(Dimens.IconSizeMedium)
+                    .size(Dimens.IconSizeMedium2)
                     .clip(MaterialTheme.shapes.medium)
                     .padding(end = Dimens.ExtraSmallPadding2)
             )
@@ -88,7 +89,6 @@ fun SearchScreenNow(
                     searchText = it
                     searchResults = getMatchingResults(it)
                 },
-                label = { Text("Search") },
                 modifier = modifier
                     .fillMaxWidth()
                     .border(
@@ -108,9 +108,9 @@ fun SearchScreenNow(
                 },
                 leadingIcon = {
                     Icon(
-                        painter = painterResource(id = R.drawable.ic_search),
+                        imageVector = Icons.Default.Search,
                         contentDescription = null,
-                        modifier = Modifier.size(Dimens.IconSize),
+                        modifier = Modifier.size(Dimens.IconSizeMedium),
                         tint = colorResource(id = R.color.body)
                     )
                 },
@@ -143,7 +143,7 @@ fun SearchScreenNow(
             Card(
                 modifier = modifier
                     .fillMaxWidth(),
-                elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
+                elevation = CardDefaults.cardElevation(ExtraSmallPadding),
                 shape = MaterialTheme.shapes.small,
                 colors = CardDefaults.cardColors(
                     containerColor = Color.White
@@ -169,11 +169,11 @@ fun SearchResultItems(modifier: Modifier = Modifier, shippingItems: ShippingItem
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
+        Image(
             painter = painterResource(shippingItems.icon),
             contentDescription = null,
             modifier = Modifier
-                .size(Dimens.IconSizeMedium)
+                .size(Dimens.IconSizeMedium2)
                 .clip(MaterialTheme.shapes.medium)
                 .padding(end = Dimens.ExtraSmallPadding2)
         )
@@ -186,16 +186,16 @@ fun SearchResultItems(modifier: Modifier = Modifier, shippingItems: ShippingItem
                 fontFamily = FontFamily.SansSerif,
                 style = MaterialTheme.typography.titleSmall,
             )
-            Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding))
+            Spacer(modifier = Modifier.height(ExtraSmallPadding))
             DetailsWidget(
-                code = "#NE43857340857904",
-                cityFrom = "Paris",
-                cityTo = "Morocco"
+                code = shippingItems.code,
+                cityFrom = shippingItems.cityFrom,
+                cityTo = shippingItems.cityTo,
             )
         }
     }
 
-    Divider(modifier = Modifier.padding(vertical = Dimens.ExtraSmallPadding2))
+    Divider(modifier = Modifier.padding(vertical = Dimens.SmallPadding))
 }
 
 @Composable
@@ -218,16 +218,16 @@ fun DetailsWidget(
             fontWeight = FontWeight.Light
         )
 
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = Modifier.width(ExtraSmallPadding2))
 
         Icon(
             imageVector = Icons.Default.Info,
             contentDescription = null,
             tint = Color.Gray,
-            modifier = Modifier.size(8.dp)
+            modifier = Modifier.size(ExtraSmallPadding2)
         )
 
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = Modifier.width(ExtraSmallPadding2))
 
         Text(
             cityFrom,
@@ -237,16 +237,16 @@ fun DetailsWidget(
             fontWeight = FontWeight.Light
         )
 
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = Modifier.width(ExtraSmallPadding2))
 
         Icon(
             imageVector = Icons.Default.ArrowForward,
             contentDescription = null,
             tint = Color.Gray,
-            modifier = Modifier.size(8.dp)
+            modifier = Modifier.size(ExtraSmallPadding2)
         )
 
-        Spacer(modifier = Modifier.width(8.dp))
+        Spacer(modifier = Modifier.width(ExtraSmallPadding2))
 
         Text(
             cityTo,
@@ -266,56 +266,56 @@ fun getMatchingResults(query: String): List<ShippingItems> {
             code = "#NE43857340857904",
             cityFrom = "Paris",
             cityTo = "Morocco",
-            icon = R.drawable.ic_box_2
+            icon = R.drawable.box_crop
         ),
         ShippingItems(
             "Summer linen jacket",
             "#NE20089934122231",
             "Barcelona",
             "Paris",
-            R.drawable.ic_box_2
+            R.drawable.box_crop
         ),
         ShippingItems(
             "Tapered fit jeans AW",
             "#NE438343340857904",
             "Colombia",
             "Paris",
-            R.drawable.ic_box_2
+            R.drawable.box_crop
         ),
         ShippingItems(
             "Slim fit jeans AW",
             "#NE848467357904",
             "Bogota",
             "Dhaka",
-            R.drawable.ic_box_2
+            R.drawable.box_crop
         ),
         ShippingItems(
             "Office setup desk",
             "#NEHJKD57340857904",
             "Dubai",
             "Dublin",
-            R.drawable.ic_box_2
+            R.drawable.box_crop
         ),
         ShippingItems(
             "Macbook air M2",
             "#NE4334GHJD40857904",
             "Lagos",
             "Accra",
-            R.drawable.ic_box_2
+            R.drawable.box_crop
         ),
         ShippingItems(
             "Dell Alien ware",
             "#NE43857340857904",
             "Bali",
             "Seychelles",
-            R.drawable.ic_box_2
+            R.drawable.box_crop
         ),
         ShippingItems(
             "Hp Elite book",
             "#NE43857340857904",
             "Paris",
             "Morocco",
-            R.drawable.ic_box_2
+            R.drawable.box_crop
         )
     )
 

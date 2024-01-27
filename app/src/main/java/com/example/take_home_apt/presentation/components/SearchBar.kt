@@ -2,6 +2,7 @@ package com.example.take_home_apt.presentation.components
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -56,9 +57,13 @@ fun SearchBar(
         }
     }
 
-    Box(modifier = modifier) {
+    Box(
+        modifier = modifier
+            .background(color = MaterialTheme.colorScheme.primary),
+    ) {
         TextField(
-            modifier = Modifier
+            modifier = modifier
+                .background(color = MaterialTheme.colorScheme.primary)
                 .fillMaxWidth()
                 .searchBar(),
             value = text,

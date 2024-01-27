@@ -20,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,7 +44,6 @@ fun TopAppBarComponent(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(IntrinsicSize.Min),
-            color = Color.Magenta
         ) {
             TopAppBar(
                 title = {
@@ -79,7 +79,7 @@ fun TopAppBarComponent(
                             Text(
                                 text = "Wertheimer, Illinois",
                                 style = MaterialTheme.typography.bodySmall,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.6f)
+                                color = MaterialTheme.colorScheme.secondary
                             )
                         }
                         // Icon at far right
@@ -93,6 +93,12 @@ fun TopAppBarComponent(
                         )
                     }
                 },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = Color.White,
+//                    navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+//                    actionIconContentColor = MaterialTheme.colorScheme.onSecondary
+                ),
             )
         }
         SearchBar(

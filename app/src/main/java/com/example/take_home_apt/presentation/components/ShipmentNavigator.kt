@@ -52,8 +52,11 @@ fun ShipmentNavigator() {
         backStackState?.destination?.route == Route.HomeScreen.route
     }
 
+    val enterScrollBehaviour = remember {}
+
     Scaffold(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize(),
         bottomBar = {
             if (isBottomBarVisible) {
                 ShipmentBottomNavigation(

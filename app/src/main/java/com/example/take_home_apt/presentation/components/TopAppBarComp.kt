@@ -34,6 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -73,12 +74,14 @@ fun TopAppBarComp(
 }
 
 @Composable
-fun ProfileTab(modifier: Modifier = Modifier) {
+fun ProfileTab(modifier: Modifier = Modifier, toolbarAlpha: Float = 1f) {
     Row(
         modifier = modifier
             .fillMaxWidth()
             .padding(SmallPadding1)
-            .height(IntrinsicSize.Min),
+            .height(IntrinsicSize.Min)
+            .alpha(toolbarAlpha)
+        ,
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Absolute.SpaceBetween
     ) {

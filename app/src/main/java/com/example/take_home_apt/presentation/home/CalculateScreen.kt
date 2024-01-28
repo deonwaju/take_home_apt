@@ -45,31 +45,50 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
+import com.example.take_home_apt.presentation.components.ContainedButtonComp
+import com.example.take_home_apt.presentation.components.SelectableButtons
 import com.example.take_home_apt.presentation.components.ToolBarComponent
 import com.example.take_home_apt.utils.Dimens.IconSizeMedium
 import com.example.take_home_apt.utils.Dimens.SmallPadding
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
+
 @Composable
 fun CalculateScreen(
     modifier: Modifier = Modifier,
+    onClick: (() -> Unit)? = null,
+    navigateToEstimationScreen: (() -> Unit)? = null
 ) {
+
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
         ToolBarComponent(
             title = "Calculate",
-            onClick = {}
+            onClick = {
+                onClick?.invoke()
+            }
         )
         Column(
-            modifier = modifier.padding(SmallPadding1)
+            modifier = modifier
+                .padding(SmallPadding1)
+                .weight(1f)
         ) {
             DestinationSection()
             Spacer(modifier = Modifier.height(SmallPadding1))
             PackagingSection()
+            Spacer(modifier = Modifier.height(SmallPadding1))
+            CategoriesSection()
         }
+        ContainedButtonComp(
+            text = "Calculate",
+            onClick = {
+                navigateToEstimationScreen?.invoke()
+            }
+        )
     }
 }
+
 
 @Composable
 fun DestinationSection(modifier: Modifier = Modifier) {
@@ -125,9 +144,9 @@ fun DestinationSection(modifier: Modifier = Modifier) {
 
 @Composable
 fun PackagingSection(modifier: Modifier = Modifier) {
-    var selectedItem by remember { mutableStateOf("Item 1") }
-    var items by remember {
-        mutableStateOf(listOf("Item 1", "Item 2", "Item 3"),)
+    var selectedItem by remember { mutableStateOf("Box") }
+    val items by remember {
+        mutableStateOf(listOf("Box", "Document", "Car"))
     }
 
     Column {
@@ -171,7 +190,7 @@ fun PackagingSection(modifier: Modifier = Modifier) {
 fun CategoriesSection(modifier: Modifier = Modifier) {
     Column {
         Text(
-            text = "Packaging",
+            text = "Categories",
             style = MaterialTheme.typography.titleMedium,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
@@ -183,7 +202,7 @@ fun CategoriesSection(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.SemiBold,
             color = Color.Gray,
         )
-
+        SelectableButtons()
     }
 }
 

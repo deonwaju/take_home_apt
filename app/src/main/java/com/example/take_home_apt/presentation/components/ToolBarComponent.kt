@@ -11,6 +11,9 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -22,11 +25,14 @@ fun ToolBarComponent(
     title: String = "",
     onClick: (() -> Unit)? = null,
 ) {
+    val titleText by remember {
+        mutableStateOf(title)
+    }
     CenterAlignedTopAppBar(
         title = {
 
             Text(
-                text = "Calculate",
+                text = titleText,
                 color = Color.White,
                 style = MaterialTheme.typography.titleLarge,
             )
@@ -42,11 +48,11 @@ fun ToolBarComponent(
                     .clickable {
                         onClick?.invoke()
                     },
-                tint = Color.White
+                tint = Color.White,
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
             containerColor = MaterialTheme.colorScheme.primary
-        )
+        ),
     )
 }

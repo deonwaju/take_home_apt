@@ -7,7 +7,7 @@ sealed class Route(
     data object SearchScreen: Route(route = "searchScreen")
     data object CalculateScreen: Route(route = "calculateScreen")
     data object ShipmentScreen: Route(route = "shipmentScreen")
-    data object DetailsScreen: Route(route = "detailsScreen")
+    data object AmountEstimationScreen: Route(route = "amountEstimationScreen")
     data object AppStartNavigation: Route(route = "appStartNavigation")
     data object ShipmentNavigation: Route(route = "shipmentNavigation")
 }

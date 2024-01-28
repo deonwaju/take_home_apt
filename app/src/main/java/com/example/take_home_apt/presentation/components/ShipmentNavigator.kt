@@ -21,6 +21,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.components.navGraph.Route
+import com.example.take_home_apt.presentation.home.AmountEstimationScreen
 import com.example.take_home_apt.presentation.home.CalculateScreen
 import com.example.take_home_apt.presentation.home.HomeScreen
 import com.example.take_home_apt.presentation.home.SearchScreen
@@ -110,7 +111,17 @@ fun ShipmentNavigator() {
                 exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
             ) {
                 OnBackClickStateSaver(navController = navController)
-                CalculateScreen()
+                CalculateScreen(
+                    onClick = {
+                        navController.popBackStack()
+                    },
+                    navigateToEstimationScreen = {
+                        navigateTo(
+                            navController = navController,
+                            route = Route.AmountEstimationScreen.route,
+                        )
+                    }
+                )
             }
             composable(
                 route = Route.ShipmentScreen.route,
@@ -127,6 +138,18 @@ fun ShipmentNavigator() {
             ) {
                 OnBackClickStateSaver(navController = navController)
                 SearchScreen(
+                    onClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+            composable(
+                route = Route.AmountEstimationScreen.route,
+                enterTransition = { -> slideInHorizontally(animationSpec = tween(500)) },
+                exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
+            ) {
+                OnBackClickStateSaver(navController = navController)
+                AmountEstimationScreen(
                     onClick = {
                         navController.popBackStack()
                     }
@@ -158,9 +181,13 @@ private fun navigateToTab(navController: NavController, route: String) {
     }
 }
 
-//private fun navigateToDetails(navController: NavController, article: Article) {
-//    navController.currentBackStackEntry?.savedStateHandle?.set("article", article)
-//    navController.navigate(
-//        route = Route.DetailsScreen.route
-//    )
-//}
+
+private fun navigateTo(
+    navController: NavController,
+    route: String,
+    key: String? = null,
+    data: Any? = null
+) {
+    navController.currentBackStackEntry?.savedStateHandle?.set(key.toString(), data)
+    navController.navigate(route)
+}

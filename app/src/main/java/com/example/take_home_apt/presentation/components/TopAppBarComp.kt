@@ -236,5 +236,5 @@ fun SearcherBoxMe(
 @Composable
 @Preview(showBackground = true)
 fun TopAppBarCompScreenPreview() {
-    SearcherBoxMe(onValueChanged = {})
+    TopAppBarComp(onClick = {})
 }

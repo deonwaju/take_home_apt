@@ -90,4 +90,5 @@ dependencies {
     //Accompanist
     implementation("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.16.1")
+    implementation("com.google.accompanist:accompanist-insets:0.17.0")
 }

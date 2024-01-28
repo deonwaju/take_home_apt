@@ -25,4 +25,6 @@ object Dimens {
 
     val VehicleImageHeight = 150.dp
 
+    val AppBarCollapsedHeight = 60.dp
+    val AppBarExpendedHeight = 150.dp
 }

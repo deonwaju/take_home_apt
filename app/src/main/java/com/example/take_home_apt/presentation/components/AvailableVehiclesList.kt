@@ -2,8 +2,6 @@ package com.example.take_home_apt.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -25,7 +23,6 @@ import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.models.AvailableVehicle
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
-import com.example.take_home_apt.utils.Dimens.SmallPadding1
 import com.example.take_home_apt.utils.Dimens.VehicleImageHeight
 
 val availableVehicles = listOf(
@@ -41,23 +38,12 @@ val availableVehicles = listOf(
 
 @Composable
 fun AvailableVehiclesList(modifier: Modifier = Modifier) {
-
-    Column (
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(horizontal = SmallPadding1)
-    ){
-        Text(text = "Available vehicles",
-            style = MaterialTheme.typography.titleLarge,
-            fontFamily = FontFamily.SansSerif,
-            fontWeight = FontWeight.Bold
-        )
-        Spacer(modifier = Modifier.height(Dimens.SmallPadding1))
-        LazyRow {
-            items(availableVehicles.size) { i ->
-                val vehicles = availableVehicles[i]
-                AvailableVehiclesItem(vehicle = vehicles)
-            }
+    LazyRow(
+        modifier = modifier.padding(horizontal = Dimens.SmallPadding1)
+    ) {
+        items(availableVehicles.size) { i ->
+            val vehicles = availableVehicles[i]
+            AvailableVehiclesItem(vehicle = vehicles)
         }
     }
 }

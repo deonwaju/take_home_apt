@@ -2,6 +2,12 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CalculateScreenPreview">
+        <State />
+      </entry>
+      <entry key="HomeScreenPreview">
+        <State />
+      </entry>
       <entry key="PreviewSearchScreen">
         <State />
       </entry>

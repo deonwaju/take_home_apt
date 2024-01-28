@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">take_home_apt</string>
+    <string name="cd_dropdown_icon">Dropdown icon</string>
 </resources>

@@ -5,33 +5,23 @@
       <entry key="CalculateScreenPreview">
         <State />
       </entry>
+      <entry key="CollapsibleTopAppBarPreview">
+        <State />
+      </entry>
       <entry key="HomeScreenPreview">
         <State />
       </entry>
       <entry key="PreviewSearchScreen">
         <State />
       </entry>
-      <entry key="TopAppBarCompScreenPreview">
-        <State>
-          <targetSelectedWithDropDown>
-            <Target>
-              <type value="QUICK_BOOT_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_3a_API_29.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-01-27T20:11:23.368319Z" />
-        </State>
+      <entry key="SelectableButtonsDemoPreview">
+        <State />
       </entry>
       <entry key="app">
         <State>
-          <targetSelectedWithDropDown>
+          <runningDeviceTargetSelectedWithDropDown>
             <Target>
-              <type value="QUICK_BOOT_TARGET" />
+              <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
@@ -39,8 +29,8 @@
                 </Key>
               </deviceKey>
             </Target>
-          </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-01-25T23:12:59.252568Z" />
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-01-28T16:55:10.805862Z" />
         </State>
       </entry>
     </value>

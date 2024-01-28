@@ -25,11 +25,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.utils.Dimens
+import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.IconSize
 import com.example.take_home_apt.utils.Dimens.SmallPadding
 
@@ -48,12 +50,30 @@ fun ShipmentHistoryItem(modifier: Modifier = Modifier) {
                 text = "pending",
                 iconRes = R.drawable.ic_loading
             )
+            Text(
+                text = "Arriving today",
+                modifier = Modifier
+                    .wrapContentWidth(),
+                fontFamily = FontFamily.SansSerif,
+                style = MaterialTheme.typography.titleLarge,
+                color = Color.Black
+            )
+            Text(
+                text = "Your delivery, #NEJ20089934122231 from Atlanta, Is arriving today!",
+                modifier = Modifier
+                    .wrapContentWidth(),
+                fontFamily = FontFamily.SansSerif,
+                fontWeight = FontWeight.Light,
+                style = MaterialTheme.typography.bodyMedium,
+                color = Color.Black,
+                maxLines = 2
+            )
         }
         Image(
             painter = painterResource(id = R.drawable.move_mate_box),
             contentDescription = "Truck",
             modifier = Modifier
-                .size(Dimens.IconSizeLarge)
+                .size(Dimens.VehicleImageHeight)
         )
     }
 }
@@ -64,7 +84,9 @@ fun ShippingStatusComponent(
     text: String = "",
     iconRes: Int,
     backgroundColor: Color = Color.LightGray,
-    shape: RoundedCornerShape = RoundedCornerShape(corner = CornerSize(16.dp))
+    shape: RoundedCornerShape = RoundedCornerShape(corner = CornerSize(16.dp)),
+    iconResTint: Color = Color(0xFFFFA500),
+    textColor: Color = Color(0xFFFFA500)
 ) {
     var textTitle by remember { mutableStateOf(text) }
     var icon by remember { mutableIntStateOf(iconRes) }
@@ -75,7 +97,7 @@ fun ShippingStatusComponent(
     ) {
         Row(
             modifier = Modifier
-                .padding(SmallPadding)
+                .padding(ExtraSmallPadding2)
                 .border(
                     width = 1.dp,
                     color = Color.Transparent,
@@ -90,14 +112,16 @@ fun ShippingStatusComponent(
                 modifier = Modifier
                     .size(IconSize)
                     .padding(end = SmallPadding),
-                tint =
+                tint = iconResTint
             )
 
             Text(
                 text = text,
                 modifier = Modifier
                     .wrapContentWidth(),
-                fontSize = 16.sp
+                fontFamily = FontFamily.SansSerif,
+                style = MaterialTheme.typography.bodyMedium,
+                color = textColor
             )
         }
     }

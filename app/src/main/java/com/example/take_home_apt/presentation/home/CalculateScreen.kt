@@ -46,7 +46,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.components.ToolBarComponent
-import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.IconSizeMedium
 import com.example.take_home_apt.utils.Dimens.SmallPadding
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
@@ -54,7 +53,6 @@ import com.example.take_home_apt.utils.Dimens.SmallPadding1
 @Composable
 fun CalculateScreen(
     modifier: Modifier = Modifier,
-    name: String = "CalculateScreen"
 ) {
     Column(
         modifier = Modifier.fillMaxSize()
@@ -67,7 +65,7 @@ fun CalculateScreen(
             modifier = modifier.padding(SmallPadding1)
         ) {
             DestinationSection()
-            Spacer(modifier = Modifier.height(Dimens.SmallPadding1))
+            Spacer(modifier = Modifier.height(SmallPadding1))
             PackagingSection()
         }
     }
@@ -102,7 +100,7 @@ fun DestinationSection(modifier: Modifier = Modifier) {
                     text = it
                 },
             )
-            Spacer(modifier = Modifier.height(Dimens.SmallPadding))
+            Spacer(modifier = Modifier.height(SmallPadding))
 
             TextFieldWithIconAndDivider(
                 hintText = "Receiver location",
@@ -111,7 +109,7 @@ fun DestinationSection(modifier: Modifier = Modifier) {
                     text = it
                 },
             )
-            Spacer(modifier = Modifier.height(Dimens.SmallPadding))
+            Spacer(modifier = Modifier.height(SmallPadding))
 
             TextFieldWithIconAndDivider(
                 hintText = "Approx weight",
@@ -194,7 +192,6 @@ fun CategoriesSection(modifier: Modifier = Modifier) {
 fun CalculateScreenPreview() {
     Column(
     ) {
-        var selectedItem by remember { mutableStateOf("Item 1") }
         CalculateScreen()
     }
 }

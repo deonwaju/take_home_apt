@@ -6,12 +6,17 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -36,7 +41,19 @@ import com.example.take_home_apt.utils.Dimens.IconSize
 import com.example.take_home_apt.utils.Dimens.SmallPadding
 
 @Composable
-fun ShipmentHistoryItem(modifier: Modifier = Modifier) {
+fun ShipmentHistoryItem(
+    modifier: Modifier = Modifier,
+    status: String = "pending",
+    iconRes: Int = R.drawable.ic_loading,
+    iconResTint: Color = Color(0xFFFFA500),
+    price: String = "$1400 USD",
+    date: String = "Sep 20, 2024",
+) {
+    var textTitle by remember { mutableStateOf(status) }
+    var priceText by remember { mutableStateOf(price) }
+    var dateText by remember { mutableStateOf(date) }
+    var icon by remember { mutableIntStateOf(iconRes) }
+    var iconResColor by remember { mutableStateOf(iconResTint) }
 
     Row(
         modifier = modifier.fillMaxWidth()
@@ -47,17 +64,19 @@ fun ShipmentHistoryItem(modifier: Modifier = Modifier) {
         ) {
 
             ShippingStatusComponent(
-                text = "pending",
-                iconRes = R.drawable.ic_loading
+                text = textTitle,
+                iconRes = icon,
+                iconResTint = iconResColor
             )
             Text(
-                text = "Arriving today",
+                text = "Arriving today!",
                 modifier = Modifier
                     .wrapContentWidth(),
                 fontFamily = FontFamily.SansSerif,
                 style = MaterialTheme.typography.titleLarge,
                 color = Color.Black
             )
+            Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding2))
             Text(
                 text = "Your delivery, #NEJ20089934122231 from Atlanta, Is arriving today!",
                 modifier = Modifier
@@ -65,9 +84,42 @@ fun ShipmentHistoryItem(modifier: Modifier = Modifier) {
                 fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.Light,
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.Black,
+                color = Color.DarkGray,
                 maxLines = 2
             )
+            Spacer(modifier = Modifier.height(Dimens.SmallPadding1))
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = priceText,
+                    modifier = Modifier
+                        .wrapContentWidth(),
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.Black
+                )
+                Spacer(modifier = Modifier.width(Dimens.ExtraSmallPadding2))
+                Icon(
+                    imageVector = Icons.Default.Info,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .size(IconSize)
+                        .padding(end = SmallPadding),
+                    tint = Color.Gray
+                )
+                Spacer(modifier = Modifier.width(Dimens.ExtraSmallPadding2))
+                Text(
+                    text = dateText,
+                    modifier = Modifier
+                        .wrapContentWidth(),
+                    fontFamily = FontFamily.SansSerif,
+                    fontWeight = FontWeight.SemiBold,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.Black
+                )
+            }
         }
         Image(
             painter = painterResource(id = R.drawable.move_mate_box),
@@ -83,9 +135,9 @@ fun ShippingStatusComponent(
     modifier: Modifier = Modifier,
     text: String = "",
     iconRes: Int,
+    iconResTint: Color = Color(0xFFFFA500),
     backgroundColor: Color = Color.LightGray,
     shape: RoundedCornerShape = RoundedCornerShape(corner = CornerSize(16.dp)),
-    iconResTint: Color = Color(0xFFFFA500),
     textColor: Color = Color(0xFFFFA500)
 ) {
     var textTitle by remember { mutableStateOf(text) }
@@ -130,5 +182,7 @@ fun ShippingStatusComponent(
 @Composable
 @Preview(showBackground = true)
 fun PreviewShipmentHistoryItem() {
-    ShipmentHistoryItem()
+    ShipmentHistoryItem(
+
+    )
 }

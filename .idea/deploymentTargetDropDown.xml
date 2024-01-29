@@ -11,13 +11,7 @@
       <entry key="HomeScreenPreview">
         <State />
       </entry>
-      <entry key="PreviewSearchScreen">
-        <State />
-      </entry>
-      <entry key="SelectableButtonsDemoPreview">
-        <State />
-      </entry>
-      <entry key="app">
+      <entry key="PreviewShipmentScreen">
         <State>
           <runningDeviceTargetSelectedWithDropDown>
             <Target>
@@ -25,12 +19,31 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="$USER_HOME$/.android/avd/Pixel_3a_API_29.avd" />
+                  <value value="$USER_HOME$/.android/avd/Nexus_7_API_29.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-01-28T16:55:10.805862Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-01-29T02:04:05.139549Z" />
+        </State>
+      </entry>
+      <entry key="SelectableButtonsDemoPreview">
+        <State />
+      </entry>
+      <entry key="app">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="$USER_HOME$/.android/avd/Pixel_3a_API_29.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-01-29T02:05:04.904936Z" />
         </State>
       </entry>
     </value>

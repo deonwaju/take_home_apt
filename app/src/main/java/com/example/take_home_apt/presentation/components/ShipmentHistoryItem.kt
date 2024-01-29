@@ -3,6 +3,7 @@ package com.example.take_home_apt.presentation.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,8 @@ import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -35,6 +38,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
+import com.example.take_home_apt.presentation.models.ShipmentHistory
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.IconSize
@@ -43,90 +47,109 @@ import com.example.take_home_apt.utils.Dimens.SmallPadding
 @Composable
 fun ShipmentHistoryItem(
     modifier: Modifier = Modifier,
-    status: String = "pending",
-    iconRes: Int = R.drawable.ic_loading,
-    iconResTint: Color = Color(0xFFFFA500),
-    price: String = "$1400 USD",
-    date: String = "Sep 20, 2024",
+    shipmentHistory: ShipmentHistory = ShipmentHistory(
+        "In progress",
+        "$1400 USD",
+        "Sep 20, 2024",
+        R.drawable.ic_loading,
+        R.color.orange,
+        R.color.orange
+    )
 ) {
-    var textTitle by remember { mutableStateOf(status) }
-    var priceText by remember { mutableStateOf(price) }
-    var dateText by remember { mutableStateOf(date) }
-    var icon by remember { mutableIntStateOf(iconRes) }
-    var iconResColor by remember { mutableStateOf(iconResTint) }
+    var textTitle by remember { mutableStateOf(shipmentHistory.status) }
+    var textColor by remember { mutableIntStateOf(shipmentHistory.statusColor) }
+    var priceText by remember { mutableStateOf(shipmentHistory.price) }
+    var dateText by remember { mutableStateOf(shipmentHistory.date) }
+    var icon by remember { mutableIntStateOf(shipmentHistory.icon) }
+    var iconResColor by remember { mutableIntStateOf(shipmentHistory.statusColor) }
 
-    Row(
-        modifier = modifier.fillMaxWidth()
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = Dimens.SmallPadding1),
+        elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
+        shape = MaterialTheme.shapes.small,
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        )
     ) {
-
-        Column(
-            modifier = modifier.weight(1f)
+        Row(
+            modifier = modifier
+                .fillMaxWidth()
+                .padding(Dimens.SmallPadding1),
         ) {
 
-            ShippingStatusComponent(
-                text = textTitle,
-                iconRes = icon,
-                iconResTint = iconResColor
-            )
-            Text(
-                text = "Arriving today!",
-                modifier = Modifier
-                    .wrapContentWidth(),
-                fontFamily = FontFamily.SansSerif,
-                style = MaterialTheme.typography.titleLarge,
-                color = Color.Black
-            )
-            Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding2))
-            Text(
-                text = "Your delivery, #NEJ20089934122231 from Atlanta, Is arriving today!",
-                modifier = Modifier
-                    .wrapContentWidth(),
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Light,
-                style = MaterialTheme.typography.bodyMedium,
-                color = Color.DarkGray,
-                maxLines = 2
-            )
-            Spacer(modifier = Modifier.height(Dimens.SmallPadding1))
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
+            Column(
+                modifier = modifier.weight(1f)
             ) {
+
+                ShippingStatusComponent(
+                    text = textTitle,
+                    iconRes = icon,
+                    textColor = textColor,
+                )
+                Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding2))
                 Text(
-                    text = priceText,
+                    text = "Arriving today!",
                     modifier = Modifier
                         .wrapContentWidth(),
                     fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.SemiBold,
-                    style = MaterialTheme.typography.bodyMedium,
+                    style = MaterialTheme.typography.titleMedium,
                     color = Color.Black
                 )
-                Spacer(modifier = Modifier.width(Dimens.ExtraSmallPadding2))
-                Icon(
-                    imageVector = Icons.Default.Info,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .size(IconSize)
-                        .padding(end = SmallPadding),
-                    tint = Color.Gray
-                )
-                Spacer(modifier = Modifier.width(Dimens.ExtraSmallPadding2))
+                Spacer(modifier = Modifier.height(ExtraSmallPadding2))
                 Text(
-                    text = dateText,
+                    text = "Your delivery, #NEJ20089934122231 \n from Atlanta, Is arriving today!",
                     modifier = Modifier
                         .wrapContentWidth(),
                     fontFamily = FontFamily.SansSerif,
-                    fontWeight = FontWeight.SemiBold,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = Color.Black
+                    fontWeight = FontWeight.Light,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = Color.DarkGray,
+                    maxLines = 2
                 )
+                Spacer(modifier = Modifier.height(Dimens.SmallPadding1))
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Text(
+                        text = priceText,
+                        modifier = Modifier
+                            .wrapContentWidth(),
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.SemiBold,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.Black
+                    )
+                    Spacer(modifier = Modifier.width(ExtraSmallPadding2))
+                    Icon(
+                        imageVector = Icons.Default.Info,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(IconSize)
+                            .padding(end = SmallPadding),
+                        tint = Color.Gray
+                    )
+                    Spacer(modifier = Modifier.width(ExtraSmallPadding2))
+                    Text(
+                        text = dateText,
+                        modifier = Modifier
+                            .wrapContentWidth(),
+                        fontFamily = FontFamily.SansSerif,
+                        fontWeight = FontWeight.SemiBold,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.Black
+                    )
+                }
             }
+            Image(
+                painter = painterResource(id = R.drawable.move_mate_box),
+                contentDescription = "Truck",
+                modifier = Modifier
+                    .size(Dimens.VehicleCardSize),
+            )
         }
-        Image(
-            painter = painterResource(id = R.drawable.move_mate_box),
-            contentDescription = "Truck",
-            modifier = Modifier
-                .size(Dimens.VehicleImageHeight)
-        )
     }
 }
 
@@ -135,12 +158,12 @@ fun ShippingStatusComponent(
     modifier: Modifier = Modifier,
     text: String = "",
     iconRes: Int,
-    iconResTint: Color = Color(0xFFFFA500),
     backgroundColor: Color = Color.LightGray,
     shape: RoundedCornerShape = RoundedCornerShape(corner = CornerSize(16.dp)),
-    textColor: Color = Color(0xFFFFA500)
+    textColor: Int =  R.color.orange
 ) {
     var textTitle by remember { mutableStateOf(text) }
+    var textTitleColor by remember { mutableIntStateOf(textColor) }
     var icon by remember { mutableIntStateOf(iconRes) }
 
     Box(
@@ -164,16 +187,16 @@ fun ShippingStatusComponent(
                 modifier = Modifier
                     .size(IconSize)
                     .padding(end = SmallPadding),
-                tint = iconResTint
+                tint = Color(textTitleColor)
             )
 
             Text(
-                text = text,
+                text = textTitle,
                 modifier = Modifier
                     .wrapContentWidth(),
                 fontFamily = FontFamily.SansSerif,
                 style = MaterialTheme.typography.bodyMedium,
-                color = textColor
+                color = Color(textTitleColor)
             )
         }
     }

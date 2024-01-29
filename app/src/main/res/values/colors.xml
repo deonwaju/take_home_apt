@@ -17,4 +17,6 @@
     <color name="placeholder">#A0A3BD</color>
     <color name="shimmer">#C3C3C3</color>
     <color name="orange">#FFA500</color>
+    <color name="lightBlue">#ADD8E6</color>
+    <color name="green">#00FF00</color>
 </resources>

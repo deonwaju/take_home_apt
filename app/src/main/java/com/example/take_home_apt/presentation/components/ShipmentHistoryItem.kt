@@ -32,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -158,7 +159,7 @@ fun ShippingStatusComponent(
     modifier: Modifier = Modifier,
     text: String = "",
     iconRes: Int,
-    backgroundColor: Color = Color.LightGray,
+    backgroundColor: Color = MaterialTheme.colorScheme.inverseOnSurface,
     shape: RoundedCornerShape = RoundedCornerShape(corner = CornerSize(16.dp)),
     textColor: Int =  R.color.orange
 ) {
@@ -187,7 +188,7 @@ fun ShippingStatusComponent(
                 modifier = Modifier
                     .size(IconSize)
                     .padding(end = SmallPadding),
-                tint = Color(textTitleColor)
+                tint = colorResource(id = textTitleColor)
             )
 
             Text(
@@ -196,7 +197,7 @@ fun ShippingStatusComponent(
                     .wrapContentWidth(),
                 fontFamily = FontFamily.SansSerif,
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color(textTitleColor)
+                color = colorResource(id = textTitleColor)
             )
         }
     }

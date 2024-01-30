@@ -2,12 +2,15 @@ package com.example.take_home_apt.presentation.components
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,8 +38,18 @@ enum class BounceState {
 fun ContainedButtonComp(
     modifier: Modifier = Modifier,
     text: String = "Continue",
-    onClick: (() -> Unit)? = null
+    onClick: (() -> Unit)? = null,
 ) {
+
+    val interactionSource = remember {
+        MutableInteractionSource()
+    }
+    val isClicked = interactionSource.collectIsPressedAsState().value
+    LaunchedEffect(key1 = isClicked) {
+        if (isClicked) {
+            onClick?.invoke()
+        }
+    }
 
     var currentState by remember { mutableStateOf(BounceState.Idle) }
 
@@ -56,6 +69,7 @@ fun ContainedButtonComp(
     val textTitle by remember {
         mutableStateOf(text)
     }
+
     Button(
         onClick = {
             currentState = BounceState.Pressed
@@ -64,7 +78,7 @@ fun ContainedButtonComp(
                 delay(500)
                 currentState = BounceState.Idle
             }
-            onClick?.invoke()
+//            onClick?.invoke()
         },
         modifier = modifier
             .fillMaxWidth()
@@ -79,7 +93,8 @@ fun ContainedButtonComp(
             pressedElevation = 4.dp,
             focusedElevation = 4.dp,
             hoveredElevation = 4.dp,
-        )
+        ),
+        interactionSource = interactionSource
     ) {
         Text(text = textTitle)
     }

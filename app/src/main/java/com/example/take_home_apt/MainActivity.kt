@@ -16,8 +16,6 @@ import com.example.take_home_apt.presentation.components.navGraph.Route
 import com.example.take_home_apt.ui.theme.Take_home_aptTheme
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.toPaddingValues
-import com.google.accompanist.systemuicontroller.SystemUiController
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +23,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         WindowCompat.setDecorFitsSystemWindows(window, true)
         setContent {
-            val systemUiController: SystemUiController = rememberSystemUiController()
-
-//            systemUiController.isStatusBarVisible = false // Status bar
-//            systemUiController.isNavigationBarVisible = false // Navigation bar
-//            systemUiController.isSystemBarsVisible = false //
 
             setContent {
                 Take_home_aptTheme {

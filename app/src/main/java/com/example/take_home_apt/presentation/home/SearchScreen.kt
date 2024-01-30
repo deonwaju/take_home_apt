@@ -82,7 +82,7 @@ fun SearchScreen(
             modifier = modifier
                 .fillMaxWidth()
                 .background(
-                    color = MaterialTheme.colorScheme.primary
+                    color = colorResource(id = R.color.purple_500)
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -112,7 +112,7 @@ fun SearchScreen(
                         shape = MaterialTheme.shapes.extraLarge,
                     )
                     .padding(Dimens.SmallPadding1)
-                    .background(color = MaterialTheme.colorScheme.primary),
+                    .background(color = colorResource(id = R.color.purple_500)),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
                 ),
@@ -128,7 +128,7 @@ fun SearchScreen(
                         imageVector = Icons.Default.Search,
                         contentDescription = null,
                         modifier = Modifier.size(Dimens.IconSizeMedium),
-                        tint = MaterialTheme.colorScheme.primary
+                        tint = colorResource(id = R.color.purple_500)
                     )
                 },
                 trailingIcon = {
@@ -147,7 +147,7 @@ fun SearchScreen(
                     cursorColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
                     disabledIndicatorColor = Color.Transparent,
                     errorIndicatorColor = Color.Transparent,
-                    focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+                    focusedIndicatorColor = colorResource(id = R.color.purple_500),
                     unfocusedIndicatorColor = Color.Transparent,
                 ),
                 singleLine = true,

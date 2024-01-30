@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ScrollableTabRow
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRowDefaults
@@ -21,6 +20,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.components.ShipmentHistoryItem
@@ -35,7 +35,7 @@ fun ShipmentScreen(
 ) {
     Column(
         modifier = modifier.fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primary)
+            .background(colorResource(id = R.color.purple_500))
     ) {
         ToolBarComponent(
             "Shipment History"
@@ -55,10 +55,9 @@ fun TabScreen(modifier: Modifier = Modifier) {
         edgePadding = SmallPadding1,
         modifier = modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primary),
-        containerColor = MaterialTheme.colorScheme.primary,
+            .background(colorResource(id = R.color.purple_500)),
+        containerColor = colorResource(id = R.color.purple_500),
         indicator = { tabPositions ->
-
             TabRowDefaults.Indicator(
                 color = Color(0xFFFFA500),
                 modifier = Modifier.tabIndicatorOffset(tabPositions[tabIndex])
@@ -76,7 +75,7 @@ fun TabScreen(modifier: Modifier = Modifier) {
                 selected = tabIndex == index,
                 onClick = { tabIndex = index },
                 modifier = modifier
-                    .background(MaterialTheme.colorScheme.primary)
+                    .background(colorResource(id = R.color.purple_500))
             )
         }
     }
@@ -111,28 +110,7 @@ fun GenericShipmentScreen(
                 ShipmentHistoryItem(shipmentHistory = result)
             }
         }
-
     }
-}
-
-@Composable
-fun AllShipmentScreen(modifier: Modifier = Modifier) {
-
-}
-
-@Composable
-fun PendingShipmentScreen(modifier: Modifier = Modifier) {
-
-}
-
-@Composable
-fun CompletedShipmentScreen(modifier: Modifier = Modifier) {
-
-}
-
-@Composable
-fun InProgressScreen(modifier: Modifier = Modifier) {
-
 }
 
 fun shipmentItems(): List<ShipmentHistory> {
@@ -376,7 +354,5 @@ fun shipmentItems(): List<ShipmentHistory> {
 @Composable
 @Preview(showBackground = true)
 fun PreviewShipmentScreen() {
-    ShipmentScreen(
-
-    )
+    ShipmentScreen()
 }

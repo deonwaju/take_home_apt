@@ -48,13 +48,7 @@ fun AmountEstimationScreen(
             color = Color.Black,
         )
         Row {
-            Text(
-                text = "$1439",
-                style = MaterialTheme.typography.titleLarge,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Light,
-                color = Color.Green,
-            )
+            PumpRunningText()
             Text(
                 text = "USD",
                 style = MaterialTheme.typography.titleSmall,
@@ -67,7 +61,7 @@ fun AmountEstimationScreen(
             )
         }
         Text(
-            text = "This amount is estimated, this will vary if you change your location or weight",
+            text = "This amount is estimated, this will vary\nif you change your location or weight",
             style = MaterialTheme.typography.bodyLarge,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,
@@ -76,7 +70,7 @@ fun AmountEstimationScreen(
             modifier = modifier.padding(SmallPadding)
         )
         ContainedButtonComp(
-            text = " to home",
+            text = "Back to home",
             onClick = {
                 onClick?.invoke()
             }

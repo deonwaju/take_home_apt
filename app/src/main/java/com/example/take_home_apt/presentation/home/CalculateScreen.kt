@@ -61,7 +61,9 @@ fun CalculateScreen(
 ) {
 
     Column(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.surface)
     ) {
         ToolBarComponent(
             title = "Calculate",
@@ -106,7 +108,7 @@ fun DestinationSection(modifier: Modifier = Modifier) {
     Card(
         modifier = modifier,
         colors = CardDefaults.cardColors(
-            containerColor = Color.White
+            containerColor = MaterialTheme.colorScheme.inverseOnSurface
         )
     ) {
         Column(
@@ -167,7 +169,7 @@ fun PackagingSection(modifier: Modifier = Modifier) {
         Card(
             modifier = modifier,
             colors = CardDefaults.cardColors(
-                containerColor = Color.White
+                containerColor = MaterialTheme.colorScheme.inverseOnSurface
             )
         ) {
             Column(

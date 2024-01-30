@@ -60,7 +60,7 @@ fun ShipmentNavigator() {
             .fillMaxSize(),
         bottomBar = {
             if (isBottomBarVisible) {
-                ShipmentBottomNavigation(
+                ShipmentBottomNavigation2(
                     items = bottomNavigationItem,
                     selectedItem = selectedItem,
                     onItemClick = { index ->

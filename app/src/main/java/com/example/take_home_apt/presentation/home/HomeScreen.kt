@@ -17,8 +17,6 @@ import com.example.take_home_apt.presentation.components.TopAppBarComp
 import com.example.take_home_apt.presentation.components.TrackingCard
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
-import com.google.accompanist.insets.LocalWindowInsets
-import com.google.accompanist.insets.toPaddingValues
 
 
 @Composable
@@ -29,11 +27,6 @@ fun HomeScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(
-//                bottom = LocalConfiguration.current.screenHeightDp.dp / 10,
-                LocalWindowInsets.current.systemBars.toPaddingValues()
-
-    ) // Adjust as needed
     ) {
         item {
             TopAppBarComp(

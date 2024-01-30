@@ -60,7 +60,7 @@ fun TopAppBarComp(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(MaterialTheme.colorScheme.primary)
+            .background(colorResource(id = R.color.purple_500))
     ) {
         ProfileTab()
         SearcherBoxMe(
@@ -189,11 +189,11 @@ fun SearcherBoxMe(
             .fillMaxWidth()
             .border(
                 width = 1.dp,
-                color = MaterialTheme.colorScheme.primary,
+                color = colorResource(id = R.color.purple_500),
                 shape = MaterialTheme.shapes.extraLarge,
             )
             .padding(SmallPadding1)
-            .background(color = MaterialTheme.colorScheme.primary),
+            .background(color = colorResource(id = R.color.purple_500)),
         keyboardOptions = KeyboardOptions.Default.copy(
             imeAction = ImeAction.Done
         ),
@@ -209,7 +209,7 @@ fun SearcherBoxMe(
                 imageVector = Icons.Default.Search,
                 contentDescription = null,
                 modifier = Modifier.size(Dimens.IconSizeMedium),
-                tint = MaterialTheme.colorScheme.primary
+                tint = colorResource(id = R.color.purple_500)
             )
         },
         trailingIcon = {
@@ -228,7 +228,7 @@ fun SearcherBoxMe(
             cursorColor = if (isSystemInDarkTheme()) Color.White else Color.Black,
             disabledIndicatorColor = Color.Transparent,
             errorIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = MaterialTheme.colorScheme.primary,
+            focusedIndicatorColor = colorResource(id = R.color.purple_500),
             unfocusedIndicatorColor = Color.Transparent,
         ),
         singleLine = true,

@@ -103,6 +103,7 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                     modifier = modifier
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center
                 ) {
                     Icon(
                         imageVector = Icons.Default.Add,

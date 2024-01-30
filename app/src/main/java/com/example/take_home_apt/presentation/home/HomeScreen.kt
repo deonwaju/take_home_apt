@@ -9,16 +9,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.presentation.components.AvailableVehiclesList
 import com.example.take_home_apt.presentation.components.TopAppBarComp
 import com.example.take_home_apt.presentation.components.TrackingCard
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
+import com.google.accompanist.insets.LocalWindowInsets
+import com.google.accompanist.insets.toPaddingValues
 
 
 @Composable
@@ -29,7 +29,11 @@ fun HomeScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(bottom = LocalConfiguration.current.screenHeightDp.dp / 10) // Adjust as needed
+            .padding(
+//                bottom = LocalConfiguration.current.screenHeightDp.dp / 10,
+                LocalWindowInsets.current.systemBars.toPaddingValues()
+
+    ) // Adjust as needed
     ) {
         item {
             TopAppBarComp(

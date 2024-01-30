@@ -225,7 +225,7 @@ fun TextFieldWithIconAndDivider(
     keyboardType: KeyboardType = KeyboardType.Text,
     onValueChange: (String) -> Unit
 ) {
-    var text by remember { mutableStateOf("") }
+    var textTitle by remember { mutableStateOf(text) }
 
     Box(
         modifier = modifier
@@ -262,7 +262,7 @@ fun TextFieldWithIconAndDivider(
             BasicTextField(
                 value = text.ifEmpty { hintText },
                 onValueChange = {
-                    text = it
+                    textTitle = it
                     onValueChange(it)
                 },
                 textStyle = MaterialTheme.typography.bodyMedium.copy(

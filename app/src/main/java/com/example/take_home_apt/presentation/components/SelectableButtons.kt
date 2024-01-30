@@ -1,5 +1,6 @@
 package com.example.take_home_apt.presentation.components
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -29,12 +30,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.SmallPadding
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 private val categories = listOf(
     "Documents", "Glass", "Liquid", "Food", "Electronic", "Product", "Others"
@@ -52,21 +57,34 @@ fun SelectableButtons() {
             .background(Color.White),
     ) {
         items(categories) { category ->
-            SelectableButton(category, selectedCategories) {
+            SelectableButton2(category, selectedCategories) {
                 selectedCategories = selectedCategories.toggle(category)
             }
         }
     }
 }
 
+private fun Set<String>.toggle(element: String): Set<String> {
+    return if (element in this) {
+        this - element
+    } else {
+        this + element
+    }
+}
+
 @Composable
-fun SelectableButton(
+fun SelectableButton2(
     categoryName: String,
     selectedCategories: Set<String>,
     modifier: Modifier = Modifier,
     onCategorySelected: (String) -> Unit
 ) {
+    var isBouncing by remember { mutableStateOf(false) }
     val isSelected = categoryName in selectedCategories
+
+    val scale by animateFloatAsState(
+        targetValue = if (isBouncing) 0.95f else 1f,
+    )
 
     Column(
         modifier = modifier
@@ -89,13 +107,20 @@ fun SelectableButton(
                     }
                 )
                 .clickable {
+                    isBouncing = true
                     onCategorySelected(categoryName)
+                    // Reset state after animation completes
+                    GlobalScope.launch {
+                        delay(200)
+                        isBouncing = false
+                    }
                 }
                 .padding(SmallPadding)
                 .fillMaxWidth()
-                .wrapContentHeight(Alignment.CenterVertically),
+                .wrapContentHeight(Alignment.CenterVertically)
+                .scale(scale),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Absolute.Center// Expand horizontally
+            horizontalArrangement = Arrangement.Absolute.Center,
         ) {
             if (isSelected) {
                 Icon(
@@ -118,15 +143,6 @@ fun SelectableButton(
                 modifier = modifier
             )
         }
-    }
-}
-
-
-private fun Set<String>.toggle(element: String): Set<String> {
-    return if (element in this) {
-        this - element
-    } else {
-        this + element
     }
 }
 

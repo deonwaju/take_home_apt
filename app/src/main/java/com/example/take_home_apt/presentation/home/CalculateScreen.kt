@@ -314,18 +314,18 @@ fun SpinnerField(
             )
 
             // Spacer to separate icon and divider
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = modifier.width(SmallPadding1))
 
             // Vertical Divider
             Divider(
                 color = Color.LightGray,
-                modifier = Modifier
+                modifier = modifier
                     .fillMaxHeight()
                     .width(1.dp)
             )
 
             // Spacer to separate divider and text input
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = modifier.width(SmallPadding1))
 
             // Text input (read-only)
             BasicTextField(
@@ -338,7 +338,7 @@ fun SpinnerField(
                     imeAction = ImeAction.Done
                 ),
                 readOnly = true,
-                modifier = Modifier
+                modifier = modifier
                     .weight(1f) // Takes up remaining space
                     .fillMaxHeight()
                     .clickable {
@@ -351,7 +351,7 @@ fun SpinnerField(
                 imageVector = Icons.Default.KeyboardArrowDown,
                 contentDescription = stringResource(id = R.string.cd_dropdown_icon),
                 tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(IconSizeMedium)
+                modifier = modifier.size(IconSizeMedium)
             )
         }
 
@@ -366,7 +366,7 @@ fun SpinnerField(
                         Text(
                             text = item,
                             style = MaterialTheme.typography.bodyMedium,
-                            modifier = Modifier.padding(SmallPadding)
+                            modifier = modifier.padding(SmallPadding)
                         )
                     },
                     onClick = {

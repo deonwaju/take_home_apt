@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -77,6 +76,8 @@ fun ShipmentHistoryItem(
             modifier = modifier
                 .fillMaxWidth()
                 .padding(Dimens.SmallPadding1),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
         ) {
 
             Column(
@@ -108,10 +109,8 @@ fun ShipmentHistoryItem(
                     color = Color.DarkGray,
                     maxLines = 2
                 )
-                Spacer(modifier = Modifier.height(Dimens.SmallPadding1))
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.Center
                 ) {
                     Text(
                         text = priceText,
@@ -122,16 +121,14 @@ fun ShipmentHistoryItem(
                         style = MaterialTheme.typography.bodySmall,
                         color = colorResource(id = R.color.purple_500)
                     )
-                    Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                     Icon(
                         painter = painterResource(R.drawable.ic_dot),
                         contentDescription = null,
                         modifier = Modifier
                             .size(IconSizeLarge)
-                            .padding(ExtraSmallPadding),
+                            .padding(horizontal = ExtraSmallPadding),
                         tint = Color.Gray
                     )
-                    Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                     Text(
                         text = dateText,
                         modifier = Modifier

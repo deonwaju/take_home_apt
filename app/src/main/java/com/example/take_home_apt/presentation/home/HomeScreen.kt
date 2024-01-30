@@ -17,7 +17,7 @@ import com.example.take_home_apt.presentation.components.TopAppBarComp
 import com.example.take_home_apt.presentation.components.TrackingCard
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
-import com.example.take_home_apt.utils.Dimens.MediumPadding4
+import com.example.take_home_apt.utils.Dimens.MediumPadding3
 
 
 @Composable
@@ -28,7 +28,7 @@ fun HomeScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(bottom = MediumPadding4)
+            .padding(bottom = MediumPadding3)
     ) {
         item {
             TopAppBarComp(

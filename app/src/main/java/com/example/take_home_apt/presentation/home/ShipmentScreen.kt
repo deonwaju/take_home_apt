@@ -31,14 +31,15 @@ import com.example.take_home_apt.utils.Dimens.SmallPadding1
 @Composable
 fun ShipmentScreen(
     modifier: Modifier = Modifier,
-    name: String = "ShipmentScreen"
+    onClick: (() -> Unit)? = null
 ) {
     Column(
         modifier = modifier.fillMaxWidth()
             .background(colorResource(id = R.color.purple_500))
     ) {
         ToolBarComponent(
-            "Shipment History"
+            "Shipment History",
+            onClick = {onClick?.invoke()}
         )
         TabScreen()
     }

@@ -2,6 +2,11 @@ package com.example.take_home_apt.presentation.components
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
+import androidx.compose.animation.shrinkOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
@@ -60,7 +65,7 @@ fun ShipmentNavigator() {
             .fillMaxSize(),
         bottomBar = {
             if (isBottomBarVisible) {
-                ShipmentBottomNavigation2(
+                ShipmentBottomNavigation(
                     items = bottomNavigationItem,
                     selectedItem = selectedItem,
                     onItemClick = { index ->
@@ -91,7 +96,6 @@ fun ShipmentNavigator() {
         NavHost(
             navController = navController,
             startDestination = Route.HomeScreen.route,
-//            modifier = Modifier.padding(bottom = bottomPadding)
         ) {
             composable(
                 route = Route.HomeScreen.route,
@@ -125,16 +129,27 @@ fun ShipmentNavigator() {
             }
             composable(
                 route = Route.ShipmentScreen.route,
-                enterTransition = { -> slideInHorizontally(animationSpec = tween(500)) },
-                exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
+                enterTransition = { -> scaleIn(
+                    initialScale = 0.5f,
+                    animationSpec = tween(500)
+                )},
+                exitTransition = { -> shrinkOut(animationSpec = tween(500)) }
             ) {
                 OnBackClickStateSaver(navController = navController)
-                ShipmentScreen()
+                ShipmentScreen(
+                    onClick = {
+                        navController.popBackStack()
+                    },
+                )
             }
             composable(
                 route = Route.SearchScreen.route,
-                enterTransition = { -> slideInHorizontally(animationSpec = tween(500)) },
-                exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
+                enterTransition = {
+                    scaleIn(initialScale = 0.5f)
+                },
+                exitTransition = { ->
+                    scaleOut(targetScale = 0.5f)
+                }
             ) {
                 OnBackClickStateSaver(navController = navController)
                 SearchScreen(
@@ -145,8 +160,12 @@ fun ShipmentNavigator() {
             }
             composable(
                 route = Route.AmountEstimationScreen.route,
-                enterTransition = { -> slideInHorizontally(animationSpec = tween(500)) },
-                exitTransition = { -> slideOutHorizontally(animationSpec = tween(500)) }
+                enterTransition = { ->
+                    fadeIn(initialAlpha = 0.5f)
+                },
+                exitTransition = {  ->
+                    fadeOut(targetAlpha = 0.5f)
+                }
             ) {
                 OnBackClickStateSaver(navController = navController)
                 AmountEstimationScreen(

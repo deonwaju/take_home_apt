@@ -25,7 +25,7 @@ import com.example.take_home_apt.utils.Dimens
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ToolBarComponent(
-    title: String = "",
+    title: String = "Hello",
     onClick: (() -> Unit)? = null,
 ) {
     val titleText by remember {

@@ -17,7 +17,7 @@ import com.example.take_home_apt.presentation.components.TopAppBarComp
 import com.example.take_home_apt.presentation.components.TrackingCard
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
-import com.example.take_home_apt.utils.Dimens.MediumPadding3
+import com.example.take_home_apt.utils.Dimens.HomeBottomPadding
 
 
 @Composable
@@ -28,7 +28,6 @@ fun HomeScreen(
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
-            .padding(bottom = MediumPadding3)
     ) {
         item {
             TopAppBarComp(
@@ -38,22 +37,26 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(ExtraSmallPadding2))
             TrackingCard()
             Spacer(modifier = Modifier.height(ExtraSmallPadding2))
-            Text(
-                text = "Available vehicles",
-                style = MaterialTheme.typography.titleLarge,
-                fontFamily = FontFamily.SansSerif,
-                fontWeight = FontWeight.Bold,
-                modifier = modifier.padding(Dimens.SmallPadding1)
-            )
+            AvailableVehiclesTitle()
             AvailableVehiclesList()
+            Spacer(modifier = Modifier.height(HomeBottomPadding))
         }
     }
+}
+
+@Composable
+private fun AvailableVehiclesTitle() {
+    Text(
+        text = "Available vehicles",
+        style = MaterialTheme.typography.titleLarge,
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier.padding(Dimens.SmallPadding1)
+    )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(
-        navigateToSearch = {}
-    )
+    HomeScreen(navigateToSearch = {})
 }

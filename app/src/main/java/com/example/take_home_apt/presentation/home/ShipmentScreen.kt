@@ -82,7 +82,7 @@ fun TabScreen(modifier: Modifier = Modifier) {
     }
     shipmentItems().let { shipmentHistoryItems ->
         when (tabIndex) {
-            0 -> GenericShipmentScreen(shipmentHistory = shipmentHistoryItems)
+            0 -> GenericShipmentScreen(shipmentHistory = shipmentHistoryItems.shuffled())
             1 -> GenericShipmentScreen(shipmentHistory = shipmentHistoryItems.filter { it.status.contains("completed") })
             2 -> GenericShipmentScreen(shipmentHistory = shipmentHistoryItems.filter { it.status.contains("In progress") })
             3 -> GenericShipmentScreen(shipmentHistory = shipmentHistoryItems.filter { it.status.contains("pending") })

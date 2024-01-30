@@ -19,6 +19,7 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
+import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.IconSize
 
@@ -29,7 +30,8 @@ fun ShipmentBottomNavigation(
     onItemClick: (Int) -> Unit
 ) {
     NavigationBar(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = Modifier.fillMaxWidth()
+            .height(Dimens.BottomPadding),
         containerColor = MaterialTheme.colorScheme.background,
         tonalElevation = 10.dp
     ) {

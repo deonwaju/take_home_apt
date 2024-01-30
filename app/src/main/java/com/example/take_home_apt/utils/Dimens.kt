@@ -12,8 +12,6 @@ object Dimens {
     val MediumPadding3 = 40.dp
     val MediumPadding4 = 52.dp
 
-    val IndicatorSize = 14.dp
-
     val SmallIconSize = 11.dp
     val IconSizeSmall = 8.dp
     val IconSize = 20.dp
@@ -25,6 +23,6 @@ object Dimens {
 
     val VehicleImageHeight = 150.dp
 
-    val AppBarCollapsedHeight = 60.dp
-    val AppBarExpendedHeight = 150.dp
+    val BottomPadding = 60.dp
+    val HomeBottomPadding = 100.dp
 }

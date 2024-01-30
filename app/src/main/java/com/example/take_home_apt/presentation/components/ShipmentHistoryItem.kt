@@ -16,8 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -41,8 +39,10 @@ import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.models.ShipmentHistory
 import com.example.take_home_apt.utils.Dimens
+import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.IconSize
+import com.example.take_home_apt.utils.Dimens.IconSizeLarge
 import com.example.take_home_apt.utils.Dimens.SmallPadding
 
 @Composable
@@ -62,7 +62,6 @@ fun ShipmentHistoryItem(
     var priceText by remember { mutableStateOf(shipmentHistory.price) }
     var dateText by remember { mutableStateOf(shipmentHistory.date) }
     var icon by remember { mutableIntStateOf(shipmentHistory.icon) }
-    var iconResColor by remember { mutableIntStateOf(shipmentHistory.statusColor) }
 
     Card(
         modifier = modifier
@@ -121,15 +120,15 @@ fun ShipmentHistoryItem(
                         fontFamily = FontFamily.SansSerif,
                         fontWeight = FontWeight.SemiBold,
                         style = MaterialTheme.typography.bodySmall,
-                        color = Color.Black
+                        color = colorResource(id = R.color.purple_500)
                     )
                     Spacer(modifier = Modifier.width(ExtraSmallPadding2))
                     Icon(
-                        imageVector = Icons.Default.Info,
+                        painter = painterResource(R.drawable.ic_dot),
                         contentDescription = null,
                         modifier = Modifier
-                            .size(IconSize)
-                            .padding(end = SmallPadding),
+                            .size(IconSizeLarge)
+                            .padding(ExtraSmallPadding),
                         tint = Color.Gray
                     )
                     Spacer(modifier = Modifier.width(ExtraSmallPadding2))

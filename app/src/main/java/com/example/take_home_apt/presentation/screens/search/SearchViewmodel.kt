@@ -42,9 +42,10 @@ class SearchViewmodel @Inject constructor(
     }
 
     private fun searchShipmentData() {
-        val shippingItemData = searchRepository.searchShipmentData(
-            query = _state.value.searchQuery
-        ).cachedIn(viewModelScope)
-        _state.value = _state.value.copy(searchItems = shippingItemData)
+        viewModelScope.launch {
+            searchRepository.searchShipmentData(query = _state.value.searchQuery).collect { data ->
+                _state.value = _state.value.copy(searchItems = data)
+            }
+        }
     }
 }

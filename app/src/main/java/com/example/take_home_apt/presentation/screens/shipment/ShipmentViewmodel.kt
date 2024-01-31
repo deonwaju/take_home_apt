@@ -28,5 +28,4 @@ class ShipmentViewmodel @Inject constructor(
             }
         }
     }
-
 }

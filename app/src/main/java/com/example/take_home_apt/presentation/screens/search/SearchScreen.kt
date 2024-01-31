@@ -113,9 +113,7 @@ fun SearchScreen(
                     )
                     .padding(Dimens.SmallPadding1)
                     .background(color = colorResource(id = R.color.purple_500)),
-                keyboardOptions = KeyboardOptions.Default.copy(
-                    imeAction = ImeAction.Done
-                ),
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
                 keyboardActions = KeyboardActions(
                     onSearch = {
                         event(SearchEvent.SearchShipmentData)
@@ -174,10 +172,11 @@ fun SearchScreen(
             LazyColumn(
                 modifier = modifier.padding(Dimens.SmallPadding1)
             ) {
-                itemsIndexed(searchState.searchItems) { index, result ->
+                val searchItems = searchState.searchItems
+                itemsIndexed(searchItems) { index, result ->
 
                     SearchResultItems(shippingItems = result)
-                    if (index < searchState.searchItems.size - 1) {
+                    if (index < searchItems.size - 1) {
                         Divider(modifier = Modifier.padding(vertical = Dimens.SmallPadding))
                     }
                 }
@@ -186,6 +185,34 @@ fun SearchScreen(
     }
 }
 
+@Composable
+fun SearchItemsCard(
+    modifier: Modifier = Modifier,
+    onSearch: () -> Unit
+) {
+    Card(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(Dimens.SmallPadding1),
+        elevation = CardDefaults.cardElevation(Dimens.ExtraSmallPadding),
+        shape = MaterialTheme.shapes.small,
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White
+        )
+    ) {
+//        LazyColumn(
+//            modifier = modifier.padding(Dimens.SmallPadding1)
+//        ) {
+//            itemsIndexed(searchState.searchItems) { index, result ->
+//
+//                SearchResultItems(shippingItems = result)
+//                if (index < searchState.searchItems.size - 1) {
+//                    Divider(modifier = Modifier.padding(vertical = Dimens.SmallPadding))
+//                }
+//            }
+//        }
+    }
+}
 @Composable
 fun SearchResultItems(modifier: Modifier = Modifier, shippingItems: ShippingItems) {
 

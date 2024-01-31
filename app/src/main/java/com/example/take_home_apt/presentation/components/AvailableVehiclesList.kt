@@ -20,7 +20,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
-import com.example.take_home_apt.presentation.models.AvailableVehicle
+import com.example.take_home_apt.data.models.AvailableVehicle
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.VehicleImageHeight

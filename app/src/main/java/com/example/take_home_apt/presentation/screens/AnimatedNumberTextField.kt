@@ -1,4 +1,4 @@
-package com.example.take_home_apt.presentation.home
+package com.example.take_home_apt.presentation.screens
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -9,7 +9,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -25,7 +24,6 @@ import kotlinx.coroutines.delay
 fun PumpRunningText(modifier: Modifier = Modifier) {
     var fuelLevel by remember { mutableStateOf(0) }
     var isPumping by remember { mutableStateOf(true) } // Start pumping automatically
-    val scope = rememberCoroutineScope()
 
     Spacer(modifier = modifier.height(16.dp))
 

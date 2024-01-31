@@ -1,4 +1,4 @@
-package com.example.take_home_apt.presentation.home
+package com.example.take_home_apt.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

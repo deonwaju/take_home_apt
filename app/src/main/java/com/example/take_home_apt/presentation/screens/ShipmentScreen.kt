@@ -1,4 +1,4 @@
-package com.example.take_home_apt.presentation.home
+package com.example.take_home_apt.presentation.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -25,7 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.components.ShipmentHistoryItem
 import com.example.take_home_apt.presentation.components.ToolBarComponent
-import com.example.take_home_apt.presentation.models.ShipmentHistory
+import com.example.take_home_apt.data.models.ShipmentHistory
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @Composable

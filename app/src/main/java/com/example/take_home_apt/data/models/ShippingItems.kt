@@ -1,4 +1,4 @@
-package com.example.take_home_apt.presentation.models
+package com.example.take_home_apt.data.models
 
 data class ShippingItems(
     var name: String,

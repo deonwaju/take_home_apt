@@ -36,7 +36,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
-import com.example.take_home_apt.presentation.models.ShipmentHistory
+import com.example.take_home_apt.data.models.ShipmentHistory
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2

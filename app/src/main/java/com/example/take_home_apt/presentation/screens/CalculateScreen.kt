@@ -1,4 +1,4 @@
-package com.example.take_home_apt.presentation.home
+package com.example.take_home_apt.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -189,7 +189,7 @@ fun PackagingSection(modifier: Modifier = Modifier) {
 }
 
 @Composable
-fun CategoriesSection(modifier: Modifier = Modifier) {
+fun CategoriesSection() {
     Column {
         Text(
             text = "Categories",

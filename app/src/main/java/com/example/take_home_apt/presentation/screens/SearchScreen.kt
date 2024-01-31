@@ -1,4 +1,4 @@
-package com.example.take_home_apt.presentation.home
+package com.example.take_home_apt.presentation.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -51,7 +51,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
-import com.example.take_home_apt.presentation.models.ShippingItems
+import com.example.take_home_apt.data.models.ShippingItems
 import com.example.take_home_apt.utils.Dimens
 
 @OptIn(ExperimentalMaterial3Api::class)

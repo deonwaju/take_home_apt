@@ -78,7 +78,6 @@ fun ContainedButtonComp(
                 delay(500)
                 currentState = BounceState.Idle
             }
-//            onClick?.invoke()
         },
         modifier = modifier
             .fillMaxWidth()
@@ -103,5 +102,5 @@ fun ContainedButtonComp(
 @Composable
 @Preview(showBackground = true)
 fun ContainedButtonCompPreview() {
-    ContainedButtonComp(text = "sad")
+    ContainedButtonComp()
 }

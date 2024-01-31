@@ -29,11 +29,11 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.ui.theme.Take_home_aptTheme
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.IconSize
+import com.example.take_home_apt.utils.Dimens.SmallerPadding
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -116,7 +116,7 @@ fun SearchBar(
 fun Modifier.searchBar(): Modifier = composed {
     if (!isSystemInDarkTheme()) {
         border(
-            width = 1.dp,
+            width = SmallerPadding,
             color = Color.Black,
             shape = MaterialTheme.shapes.extraLarge
         )
@@ -130,8 +130,6 @@ fun Modifier.searchBar(): Modifier = composed {
 @Composable
 fun SearchBarPreview() {
     Take_home_aptTheme {
-        SearchBar(text = "", onValueChange = {}, readOnly = false) {
-
-        }
+        SearchBar(text = "", onValueChange = {}, readOnly = false) {}
     }
 }

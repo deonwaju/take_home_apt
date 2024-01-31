@@ -17,11 +17,11 @@ import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding2
 import com.example.take_home_apt.utils.Dimens.IconSize
+import com.example.take_home_apt.utils.Dimens.SmallPadding
 
 @Composable
 fun ShipmentBottomNavigation(
@@ -33,7 +33,7 @@ fun ShipmentBottomNavigation(
         modifier = Modifier.fillMaxWidth()
             .height(Dimens.BottomPadding),
         containerColor = MaterialTheme.colorScheme.background,
-        tonalElevation = 10.dp
+        tonalElevation = SmallPadding
     ) {
         items.forEachIndexed { index, item -> 
             NavigationBarItem(

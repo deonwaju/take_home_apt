@@ -1,4 +1,36 @@
 <resources>
     <string name="app_name">take_home_apt</string>
     <string name="cd_dropdown_icon">Dropdown icon</string>
+    <string name="mode">Mode</string>
+    <string name="wertheimer_illinois">Wertheimer, Illinois</string>
+    <string name="your_location">Your location</string>
+    <string name="enter_the_receipt_number">Enter the receipt number...</string>
+    <string name="truck">Truck</string>
+    <string name="your_delivery_nej20089934122231_from_atlanta_is_arriving_today">Your delivery, #NEJ20089934122231 \n from Atlanta, Is arriving today!</string>
+    <string name="arriving_today">Arriving today!</string>
+    <string name="tracking">Tracking</string>
+    <string name="shipment_number">Shipment Number</string>
+    <string name="nej20089934122231">NEJ20089934122231</string>
+    <string name="add_stop">Add Stop</string>
+    <string name="total_estimated_amount">Total Estimated Amount</string>
+    <string name="usd">USD</string>
+    <string name="this_amount_is_estimated_this_will_vary_if_you_change_your_location_or_weight">This amount is estimated, this will vary\nif you change your location or weight</string>
+    <string name="calculate">Calculate</string>
+    <string name="destination">Destination</string>
+    <string name="sender_location">Sender location</string>
+    <string name="receiver_location">Receiver location</string>
+    <string name="approx_weight">Approx weight</string>
+    <string name="packaging">Packaging</string>
+    <string name="what_are_you_sending">What are you sending?</string>
+    <string name="select_an_item">Select an item</string>
+    <string name="categories">Categories</string>
+    <string name="available_vehicles">Available vehicles</string>
+    <string name="shipment_history">Shipment History</string>
+    <string name="sender">Sender</string>
+    <string name="atlanta_5243">Atlanta, 5243</string>
+    <string name="receiver">Receiver</string>
+    <string name="chicago_6342">Chicago, 6342</string>
+    <string name="time">Time</string>
+    <string name="waiting_to_collect">Waiting to collect</string>
+    <string name="_2_day_3_days">2 day - 3 days</string>
 </resources>

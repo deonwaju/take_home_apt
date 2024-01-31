@@ -9,9 +9,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.take_home_apt.R
 import com.example.take_home_apt.presentation.components.AvailableVehiclesList
 import com.example.take_home_apt.presentation.components.TopAppBarComp
 import com.example.take_home_apt.presentation.components.TrackingCard
@@ -47,7 +49,7 @@ fun HomeScreen(
 @Composable
 private fun AvailableVehiclesTitle() {
     Text(
-        text = "Available vehicles",
+        text = stringResource(R.string.available_vehicles),
         style = MaterialTheme.typography.titleLarge,
         fontFamily = FontFamily.SansSerif,
         fontWeight = FontWeight.Bold,

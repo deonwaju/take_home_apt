@@ -16,25 +16,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
 import com.example.take_home_apt.data.models.AvailableVehicle
+import com.example.take_home_apt.data.models.availableVehicles
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.VehicleImageHeight
 
-val availableVehicles = listOf(
-    AvailableVehicle("Ocean freight", "International", R.drawable.ship),
-    AvailableVehicle("Cargo freight", "Reliable", R.drawable.trailer),
-    AvailableVehicle("Air freight", "International", R.drawable.ship),
-    AvailableVehicle("Road freight", "Reliable", R.drawable.trailer),
-    AvailableVehicle("Ocean freight", "International", R.drawable.ship),
-    AvailableVehicle("Cargo freight", "Reliable", R.drawable.trailer),
-    AvailableVehicle("Air freight", "International", R.drawable.ship),
-    AvailableVehicle("Road freight", "Reliable", R.drawable.trailer)
-)
 
 @Composable
 fun AvailableVehiclesList(modifier: Modifier = Modifier) {
@@ -84,7 +76,7 @@ fun AvailableVehiclesItem(modifier: Modifier = Modifier, vehicle: AvailableVehic
         }
         Image(
             painter = imagePainter,
-            contentDescription = "Mode",
+            contentDescription = stringResource(R.string.mode),
             modifier = Modifier
                 .size(Dimens.VehicleCardSize)
                 .clip(MaterialTheme.shapes.medium),

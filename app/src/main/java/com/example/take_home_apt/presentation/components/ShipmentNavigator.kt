@@ -10,7 +10,6 @@ import androidx.compose.animation.shrinkOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -30,9 +30,9 @@ import com.example.take_home_apt.presentation.screens.AmountEstimationScreen
 import com.example.take_home_apt.presentation.screens.CalculateScreen
 import com.example.take_home_apt.presentation.screens.HomeScreen
 import com.example.take_home_apt.presentation.screens.SearchScreen
-import com.example.take_home_apt.presentation.screens.ShipmentScreen
+import com.example.take_home_apt.presentation.screens.shipment.ShipmentScreen
+import com.example.take_home_apt.presentation.screens.shipment.ShipmentViewmodel
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ShipmentNavigator() {
     val bottomNavigationItem = remember {
@@ -135,8 +135,11 @@ fun ShipmentNavigator() {
                 )},
                 exitTransition = { -> shrinkOut(animationSpec = tween(500)) }
             ) {
+                val viewModel: ShipmentViewmodel = hiltViewModel()
+
                 OnBackClickStateSaver(navController = navController)
                 ShipmentScreen(
+                    state = viewModel.state,
                     onClick = {
                         navController.popBackStack()
                     },

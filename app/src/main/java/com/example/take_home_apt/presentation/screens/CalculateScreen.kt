@@ -51,6 +51,7 @@ import com.example.take_home_apt.presentation.components.ToolBarComponent
 import com.example.take_home_apt.utils.Dimens.IconSizeMedium
 import com.example.take_home_apt.utils.Dimens.SmallPadding
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
+import com.example.take_home_apt.utils.Dimens.SmallerPadding
 
 
 @Composable
@@ -66,7 +67,7 @@ fun CalculateScreen(
             .background(MaterialTheme.colorScheme.surface)
     ) {
         ToolBarComponent(
-            title = "Calculate",
+            title = stringResource(R.string.calculate),
             onClick = {
                 onClick?.invoke()
             }
@@ -98,7 +99,7 @@ fun DestinationSection(modifier: Modifier = Modifier) {
     var text by remember { mutableStateOf("") }
 
     Text(
-        text = "Destination",
+        text = stringResource(R.string.destination),
         style = MaterialTheme.typography.titleMedium,
         fontFamily = FontFamily.SansSerif,
         fontWeight = FontWeight.Bold,
@@ -115,7 +116,7 @@ fun DestinationSection(modifier: Modifier = Modifier) {
             modifier = modifier.padding(SmallPadding)
         ) {
             TextFieldWithIconAndDivider(
-                hintText = "Sender location",
+                hintText = stringResource(R.string.sender_location),
                 icon = R.drawable.grey_send,
                 onValueChange = {
                     text = it
@@ -124,7 +125,7 @@ fun DestinationSection(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(SmallPadding))
 
             TextFieldWithIconAndDivider(
-                hintText = "Receiver location",
+                hintText = stringResource(R.string.receiver_location),
                 icon = R.drawable.grey_receive,
                 onValueChange = {
                     text = it
@@ -133,7 +134,7 @@ fun DestinationSection(modifier: Modifier = Modifier) {
             Spacer(modifier = Modifier.height(SmallPadding))
 
             TextFieldWithIconAndDivider(
-                hintText = "Approx weight",
+                hintText = stringResource(R.string.approx_weight),
                 icon = R.drawable.hourglass,
                 onValueChange = {
                     text = it
@@ -153,13 +154,13 @@ fun PackagingSection(modifier: Modifier = Modifier) {
 
     Column {
         Text(
-            text = "Packaging",
+            text = stringResource(R.string.packaging),
             style = MaterialTheme.typography.titleMedium,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
         )
         Text(
-            text = "What are you sending?",
+            text = stringResource(R.string.what_are_you_sending),
             style = MaterialTheme.typography.titleMedium,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,
@@ -176,7 +177,7 @@ fun PackagingSection(modifier: Modifier = Modifier) {
                 modifier = modifier.padding(SmallPadding)
             ) {
                 SpinnerField(
-                    hintText = "Select an item",
+                    hintText = stringResource(R.string.select_an_item),
                     items = items,
                     selectedItem = selectedItem,
                     onItemSelected = {
@@ -192,13 +193,13 @@ fun PackagingSection(modifier: Modifier = Modifier) {
 fun CategoriesSection() {
     Column {
         Text(
-            text = "Categories",
+            text = stringResource(R.string.categories),
             style = MaterialTheme.typography.titleMedium,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold,
         )
         Text(
-            text = "What are you sending?",
+            text = stringResource(id = R.string.what_are_you_sending),
             style = MaterialTheme.typography.titleMedium,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,
@@ -321,7 +322,7 @@ fun SpinnerField(
                 color = Color.LightGray,
                 modifier = modifier
                     .fillMaxHeight()
-                    .width(1.dp)
+                    .width(SmallerPadding)
             )
 
             // Spacer to separate divider and text input

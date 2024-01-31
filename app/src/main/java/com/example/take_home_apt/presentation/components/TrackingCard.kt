@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -44,7 +45,7 @@ fun TrackingCard(modifier: Modifier = Modifier) {
         modifier = modifier.padding(SmallPadding1)
     ){
         Text(
-            text = "Tracking",
+            text = stringResource(R.string.tracking),
             style = MaterialTheme.typography.titleLarge,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Bold
@@ -71,7 +72,7 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                         modifier = modifier.weight(1f)
                     ) {
                         Text(
-                            text = "Shipment Number",
+                            text = stringResource(R.string.shipment_number),
                             color = Color.Gray,
                             style = MaterialTheme.typography.titleMedium,
                             fontFamily = FontFamily.SansSerif,
@@ -79,7 +80,7 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                         )
                         Spacer(modifier = Modifier.height(ExtraSmallPadding2))
                         Text(
-                            text = "NEJ20089934122231",
+                            text = stringResource(R.string.nej20089934122231),
                             fontFamily = FontFamily.SansSerif,
                             style = MaterialTheme.typography.titleMedium,
                             fontWeight = FontWeight.Bold
@@ -87,7 +88,7 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                     }
                     Image(
                         painter = painterResource(id = R.drawable.ic_moving_vehicle),
-                        contentDescription = "Truck",
+                        contentDescription = stringResource(id = R.string.truck),
                         modifier = Modifier
                             .size(Dimens.IconSizeLarge)
                             .clip(CircleShape),
@@ -111,7 +112,7 @@ fun TrackingCard(modifier: Modifier = Modifier) {
                         tint = colorResource(id = R.color.orange) // Change the icon color
                     )
                     Text(
-                        text = "Add Stop",
+                        text = stringResource(R.string.add_stop),
                         color = colorResource(id = R.color.orange),
                         style = MaterialTheme.typography.titleMedium,
                         fontFamily = FontFamily.SansSerif,
@@ -147,13 +148,13 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
                     .weight(1f)
             ) {
                 Text(
-                    text = "Sender",
+                    text = stringResource(R.string.sender),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Light
                 )
                 Text(
-                    text = "Atlanta, 5243",
+                    text = stringResource(R.string.atlanta_5243),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.SemiBold
@@ -167,13 +168,13 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
 
             ) {
                 Text(
-                    text = "Time",
+                    text = stringResource(id = R.string.time),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Light
                 )
                 Text(
-                    text = "2 day - 3 days",
+                    text = stringResource(R.string._2_day_3_days),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.SemiBold
@@ -200,13 +201,13 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
                     .weight(1f)
             ) {
                 Text(
-                    text = "Receiver",
+                    text = stringResource(R.string.receiver),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Light
                 )
                 Text(
-                    text = "Chicago, 6342",
+                    text = stringResource(R.string.chicago_6342),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.SemiBold
@@ -219,13 +220,13 @@ fun TrackingCardItems(modifier: Modifier = Modifier) {
                     .weight(1f)
             ) {
                 Text(
-                    text = "Time",
+                    text = stringResource(R.string.time),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.Light
                 )
                 Text(
-                    text = "Waiting to collect",
+                    text = stringResource(R.string.waiting_to_collect),
                     style = MaterialTheme.typography.labelMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.SemiBold

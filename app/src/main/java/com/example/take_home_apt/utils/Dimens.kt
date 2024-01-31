@@ -3,6 +3,7 @@ package com.example.take_home_apt.utils
 import androidx.compose.ui.unit.dp
 
 object Dimens {
+    val SmallerPadding = 1.dp
     val ExtraSmallPadding = 3.dp
     val ExtraSmallPadding2 = 6.dp
     val SmallPadding = 8.dp

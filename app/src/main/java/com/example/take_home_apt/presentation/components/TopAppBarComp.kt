@@ -40,15 +40,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.utils.Dimens
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
+import com.example.take_home_apt.utils.Dimens.SmallPadding
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
 
 @Composable
@@ -85,7 +86,6 @@ fun ProfileTab(modifier: Modifier = Modifier, toolbarAlpha: Float = 1f) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Absolute.SpaceBetween
     ) {
-        // Profile picture at the top left
         Image(
             painter = painterResource(R.drawable.profile_person_cropped),
             contentDescription = null,
@@ -94,12 +94,11 @@ fun ProfileTab(modifier: Modifier = Modifier, toolbarAlpha: Float = 1f) {
                 .clip(CircleShape)
         )
 
-        // Text "your location" at the right of the profile picture
         Column(
             modifier = Modifier
                 .fillMaxHeight()
                 .weight(1f)
-                .padding(start = 8.dp),
+                .padding(start = SmallPadding),
         ) {
             Row(
                 modifier = modifier
@@ -118,7 +117,7 @@ fun ProfileTab(modifier: Modifier = Modifier, toolbarAlpha: Float = 1f) {
                 )
 
                 Text(
-                    text = "Your location",
+                    text = stringResource(R.string.your_location),
                     style = MaterialTheme.typography.bodyMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.ExtraLight,
@@ -131,7 +130,7 @@ fun ProfileTab(modifier: Modifier = Modifier, toolbarAlpha: Float = 1f) {
                 verticalAlignment = Alignment.CenterVertically,
             ) {
                 Text(
-                    text = "Wertheimer, Illinois",
+                    text = stringResource(R.string.wertheimer_illinois),
                     style = MaterialTheme.typography.bodyMedium,
                     fontFamily = FontFamily.SansSerif,
                     fontWeight = FontWeight.SemiBold,
@@ -147,7 +146,7 @@ fun ProfileTab(modifier: Modifier = Modifier, toolbarAlpha: Float = 1f) {
                 )
             }
         }
-        // Icon at far right
+
         Image(
             painter = painterResource(R.drawable.notification_bell_cropped),
             contentDescription = null,
@@ -188,7 +187,7 @@ fun SearcherBoxMe(
         modifier = modifier
             .fillMaxWidth()
             .border(
-                width = 1.dp,
+                width = Dimens.SmallerPadding,
                 color = colorResource(id = R.color.purple_500),
                 shape = MaterialTheme.shapes.extraLarge,
             )
@@ -199,7 +198,7 @@ fun SearcherBoxMe(
         ),
         placeholder = {
             Text(
-                text = "Enter the receipt number...",
+                text = stringResource(R.string.enter_the_receipt_number),
                 style = MaterialTheme.typography.bodySmall,
                 color = colorResource(id = R.color.placeholder)
             )

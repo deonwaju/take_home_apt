@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -36,12 +37,12 @@ fun AmountEstimationScreen(
 
         Image(
             painter = painterResource(id = R.drawable.movemate_logo_and_box),
-            contentDescription = "Truck",
+            contentDescription = stringResource(id = R.string.truck),
             modifier = Modifier
                 .size(300.dp)
         )
         Text(
-            text = "Total Estimated Amount",
+            text = stringResource(R.string.total_estimated_amount),
             style = MaterialTheme.typography.titleLarge,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,
@@ -50,7 +51,7 @@ fun AmountEstimationScreen(
         Row {
             PumpRunningText()
             Text(
-                text = "USD",
+                text = stringResource(R.string.usd),
                 style = MaterialTheme.typography.titleSmall,
                 fontFamily = FontFamily.SansSerif,
                 fontWeight = FontWeight.Light,
@@ -61,7 +62,7 @@ fun AmountEstimationScreen(
             )
         }
         Text(
-            text = "This amount is estimated, this will vary\nif you change your location or weight",
+            text = stringResource(R.string.this_amount_is_estimated_this_will_vary_if_you_change_your_location_or_weight),
             style = MaterialTheme.typography.bodyLarge,
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.SemiBold,

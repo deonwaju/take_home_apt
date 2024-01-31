@@ -37,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.utils.Dimens.ExtraSmallPadding
 import com.example.take_home_apt.utils.Dimens.SmallPadding
+import com.example.take_home_apt.utils.Dimens.SmallerPadding
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -95,7 +96,7 @@ fun SelectableButton2(
             modifier = Modifier
                 .clip(MaterialTheme.shapes.small)
                 .border(
-                    width = 1.dp,
+                    width = SmallerPadding,
                     color = MaterialTheme.colorScheme.onSurface,
                     shape = MaterialTheme.shapes.small
                 )

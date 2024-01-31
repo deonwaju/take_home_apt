@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -91,7 +92,7 @@ fun ShipmentHistoryItem(
                 )
                 Spacer(modifier = Modifier.height(Dimens.ExtraSmallPadding2))
                 Text(
-                    text = "Arriving today!",
+                    text = stringResource(R.string.arriving_today),
                     modifier = Modifier
                         .wrapContentWidth(),
                     fontFamily = FontFamily.SansSerif,
@@ -100,7 +101,7 @@ fun ShipmentHistoryItem(
                 )
                 Spacer(modifier = Modifier.height(ExtraSmallPadding2))
                 Text(
-                    text = "Your delivery, #NEJ20089934122231 \n from Atlanta, Is arriving today!",
+                    text = stringResource(R.string.your_delivery_nej20089934122231_from_atlanta_is_arriving_today),
                     modifier = Modifier
                         .wrapContentWidth(),
                     fontFamily = FontFamily.SansSerif,
@@ -142,7 +143,7 @@ fun ShipmentHistoryItem(
             }
             Image(
                 painter = painterResource(id = R.drawable.move_mate_box),
-                contentDescription = "Truck",
+                contentDescription = stringResource(R.string.truck),
                 modifier = Modifier
                     .size(Dimens.VehicleCardSize),
             )

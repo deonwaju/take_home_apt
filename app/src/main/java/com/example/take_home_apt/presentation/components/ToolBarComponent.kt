@@ -18,7 +18,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
 import com.example.take_home_apt.utils.Dimens
 
@@ -56,10 +55,4 @@ fun ToolBarComponent(
             containerColor = colorResource(id = R.color.purple_500)
         ),
     )
-}
-
-@Preview
-@Composable
-fun test(){
-    ToolBarComponent()
 }

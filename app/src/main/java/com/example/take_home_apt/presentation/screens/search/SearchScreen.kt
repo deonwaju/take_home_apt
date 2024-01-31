@@ -1,4 +1,4 @@
-package com.example.take_home_apt.presentation.screens
+package com.example.take_home_apt.presentation.screens.search
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -45,10 +45,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.take_home_apt.R
 import com.example.take_home_apt.data.models.ShippingItems
@@ -59,9 +59,11 @@ import com.example.take_home_apt.utils.Dimens
 fun SearchScreen(
     modifier: Modifier = Modifier,
     onClick: (() -> Unit)? = null,
+    searchState: SearchState,
+    event: (SearchEvent) -> Unit,
 ) {
     var searchText by remember { mutableStateOf("") }
-    var searchResults by remember { mutableStateOf(data()) }
+    var searchResults by remember { mutableStateOf(searchState.searchItems) }
 
     val interactionSource = remember {
         MutableInteractionSource()
@@ -76,7 +78,6 @@ fun SearchScreen(
     Column(
         modifier = modifier
             .fillMaxWidth()
-
     ) {
         Row(
             modifier = modifier
@@ -97,12 +98,16 @@ fun SearchScreen(
                     },
                 tint = Color.White
             )
-
+//            SearchBar(
+//                text = state.searchQuery,
+//                readOnly = false,
+//                onValueChange = { event(SearchEvent.UpdateSearchQuery(it))},
+//                onSearch = { event(SearchEvent.SearchNews)}
+//            )
             TextField(
-                value = searchText,
+                value = searchState.searchQuery,
                 onValueChange = {
-                    searchText = it
-                    searchResults = getMatchingResults(it)
+                   event(SearchEvent.UpdateSearchQuery(it))
                 },
                 modifier = modifier
                     .fillMaxWidth()
@@ -118,7 +123,7 @@ fun SearchScreen(
                 ),
                 placeholder = {
                     Text(
-                        text = "Search",
+                        text = stringResource(R.string.search),
                         style = MaterialTheme.typography.bodySmall,
                         color = colorResource(id = R.color.placeholder)
                     )
@@ -169,7 +174,7 @@ fun SearchScreen(
             LazyColumn(
                 modifier = modifier.padding(Dimens.SmallPadding1)
             ) {
-                itemsIndexed(searchResults) { index, result ->
+                itemsIndexed(searchState.searchItems) { index, result ->
 
                     SearchResultItems(shippingItems = result)
                     if (index < searchResults.size - 1) {
@@ -273,82 +278,5 @@ fun DetailsWidget(
             fontFamily = FontFamily.SansSerif,
             fontWeight = FontWeight.Light
         )
-    }
-}
-
-fun getMatchingResults(query: String): List<ShippingItems> {
-    return data().takeIf { query.isNotEmpty() }?.filter { it.name.contains(query, ignoreCase = true) }
-        ?: data()
-}
-
-fun data(): List<ShippingItems> {
-    // Hardcoded data for demonstration
-    val data = listOf(
-        ShippingItems(
-            name = "Macbook pro M2",
-            code = "#NE43857340857904",
-            cityFrom = "Paris",
-            cityTo = "Morocco",
-            icon = R.drawable.box_crop
-        ),
-        ShippingItems(
-            "Summer linen jacket",
-            "#NE20089934122231",
-            "Barcelona",
-            "Paris",
-            R.drawable.box_crop
-        ),
-        ShippingItems(
-            "Tapered fit jeans AW",
-            "#NE438343340857904",
-            "Colombia",
-            "Paris",
-            R.drawable.box_crop
-        ),
-        ShippingItems(
-            "Slim fit jeans AW",
-            "#NE848467357904",
-            "Bogota",
-            "Dhaka",
-            R.drawable.box_crop
-        ),
-        ShippingItems(
-            "Office setup desk",
-            "#NEHJKD57340857904",
-            "Dubai",
-            "Dublin",
-            R.drawable.box_crop
-        ),
-        ShippingItems(
-            "Macbook air M2",
-            "#NE4334GHJD40857904",
-            "Lagos",
-            "Accra",
-            R.drawable.box_crop
-        ),
-        ShippingItems(
-            "Dell Alien ware",
-            "#NE43857340857904",
-            "Bali",
-            "Seychelles",
-            R.drawable.box_crop
-        ),
-        ShippingItems(
-            "Hp Elite book",
-            "#NE43857340857904",
-            "Paris",
-            "Morocco",
-            R.drawable.box_crop
-        )
-    )
-    return data
-}
-
-@Composable
-@Preview(showBackground = true)
-fun PreviewSearchScreen() {
-    Column(
-    ) {
-        SearchScreen()
     }
 }

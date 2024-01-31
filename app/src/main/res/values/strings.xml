@@ -33,4 +33,5 @@
     <string name="time">Time</string>
     <string name="waiting_to_collect">Waiting to collect</string>
     <string name="_2_day_3_days">2 day - 3 days</string>
+    <string name="search">Search</string>
 </resources>

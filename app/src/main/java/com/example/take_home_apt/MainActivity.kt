@@ -16,26 +16,25 @@ import com.example.take_home_apt.presentation.components.navGraph.Route
 import com.example.take_home_apt.ui.theme.Take_home_aptTheme
 import com.google.accompanist.insets.LocalWindowInsets
 import com.google.accompanist.insets.toPaddingValues
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         WindowCompat.setDecorFitsSystemWindows(window, true)
         setContent {
-
-            setContent {
-                Take_home_aptTheme {
-                    Box(
-                        modifier = Modifier
-                            .background(color = MaterialTheme.colorScheme.background)
-                            .safeDrawingPadding()
-                            .padding(
-                                LocalWindowInsets.current.systemBars.toPaddingValues()
-                            )
-                    ) {
-                        NavGraph(startDestination = Route.ShipmentNavigation.route)
-                    }
+            Take_home_aptTheme {
+                Box(
+                    modifier = Modifier
+                        .background(color = MaterialTheme.colorScheme.background)
+                        .safeDrawingPadding()
+                        .padding(
+                            LocalWindowInsets.current.systemBars.toPaddingValues()
+                        )
+                ) {
+                    NavGraph(startDestination = Route.ShipmentNavigation.route)
                 }
             }
         }

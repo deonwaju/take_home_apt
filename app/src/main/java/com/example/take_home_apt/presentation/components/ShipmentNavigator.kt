@@ -29,7 +29,8 @@ import com.example.take_home_apt.presentation.components.navGraph.Route
 import com.example.take_home_apt.presentation.screens.AmountEstimationScreen
 import com.example.take_home_apt.presentation.screens.CalculateScreen
 import com.example.take_home_apt.presentation.screens.HomeScreen
-import com.example.take_home_apt.presentation.screens.SearchScreen
+import com.example.take_home_apt.presentation.screens.search.SearchScreen
+import com.example.take_home_apt.presentation.screens.search.SearchViewmodel
 import com.example.take_home_apt.presentation.screens.shipment.ShipmentScreen
 import com.example.take_home_apt.presentation.screens.shipment.ShipmentViewmodel
 
@@ -129,15 +130,16 @@ fun ShipmentNavigator() {
             }
             composable(
                 route = Route.ShipmentScreen.route,
-                enterTransition = { -> scaleIn(
-                    initialScale = 0.5f,
-                    animationSpec = tween(500)
-                )},
+                enterTransition = { ->
+                    scaleIn(
+                        initialScale = 0.5f,
+                        animationSpec = tween(500)
+                    )
+                },
                 exitTransition = { -> shrinkOut(animationSpec = tween(500)) }
             ) {
-                val viewModel: ShipmentViewmodel = hiltViewModel()
-
                 OnBackClickStateSaver(navController = navController)
+                val viewModel: ShipmentViewmodel = hiltViewModel()
                 ShipmentScreen(
                     state = viewModel.state,
                     onClick = {
@@ -154,11 +156,15 @@ fun ShipmentNavigator() {
                     scaleOut(targetScale = 0.5f)
                 }
             ) {
+                val viewModel: SearchViewmodel = hiltViewModel()
+
                 OnBackClickStateSaver(navController = navController)
                 SearchScreen(
+                    searchState = viewModel.state.value,
                     onClick = {
                         navController.popBackStack()
-                    }
+                    },
+                    event = viewModel::onEvent,
                 )
             }
             composable(
@@ -166,7 +172,7 @@ fun ShipmentNavigator() {
                 enterTransition = { ->
                     fadeIn(initialAlpha = 0.5f)
                 },
-                exitTransition = {  ->
+                exitTransition = { ->
                     fadeOut(targetAlpha = 0.5f)
                 }
             ) {

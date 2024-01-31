@@ -22,10 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.take_home_apt.R
 import com.example.take_home_apt.data.models.ShipmentHistory
-import com.example.take_home_apt.data.models.shipmentItems
 import com.example.take_home_apt.presentation.components.ShipmentHistoryItem
 import com.example.take_home_apt.presentation.components.ToolBarComponent
 import com.example.take_home_apt.utils.Dimens.SmallPadding1
@@ -84,7 +82,8 @@ fun TabScreen(modifier: Modifier = Modifier, shipmentHistory: List<ShipmentHisto
             )
         }
     }
-    shipmentItems.let { shipmentHistoryItems ->
+
+    shipmentHistory.let { shipmentHistoryItems ->
         when (tabIndex) {
             0 -> GenericShipmentScreen(shipmentHistory = shipmentHistoryItems.shuffled())
             1 -> GenericShipmentScreen(shipmentHistory = shipmentHistoryItems.filter { it.status.contains("completed") })
@@ -94,7 +93,6 @@ fun TabScreen(modifier: Modifier = Modifier, shipmentHistory: List<ShipmentHisto
         }
     }
 }
-
 
 @Composable
 fun GenericShipmentScreen(
@@ -117,11 +115,4 @@ fun GenericShipmentScreen(
             }
         }
     }
-}
-
-
-@Composable
-@Preview(showBackground = true)
-fun PreviewShipmentScreen() {
-    ShipmentScreen()
 }

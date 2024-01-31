@@ -1,12 +1,13 @@
 package com.example.take_home_apt.di
 
-import com.example.take_home_apt.data.repo.IShipmentRepo
+import com.example.take_home_apt.data.repo.ISearchRepository
+import com.example.take_home_apt.data.repo.IShipmentRepository
+import com.example.take_home_apt.data.repo.SearchRepositoryImpl
 import com.example.take_home_apt.data.repo.ShipmentRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Singleton
 
 
@@ -16,7 +17,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideIShipmentRepository(
-        ioDispatcher: CoroutineDispatcher,
-    ): IShipmentRepo = ShipmentRepositoryImpl()
+    fun provideIShipmentRepository(): IShipmentRepository = ShipmentRepositoryImpl()
+
+    @Provides
+    @Singleton
+    fun provideISearchRepository(): ISearchRepository = SearchRepositoryImpl()
 }

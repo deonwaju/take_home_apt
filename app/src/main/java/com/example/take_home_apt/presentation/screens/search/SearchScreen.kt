@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
@@ -98,12 +99,6 @@ fun SearchScreen(
                     },
                 tint = Color.White
             )
-//            SearchBar(
-//                text = state.searchQuery,
-//                readOnly = false,
-//                onValueChange = { event(SearchEvent.UpdateSearchQuery(it))},
-//                onSearch = { event(SearchEvent.SearchNews)}
-//            )
             TextField(
                 value = searchState.searchQuery,
                 onValueChange = {
@@ -120,6 +115,11 @@ fun SearchScreen(
                     .background(color = colorResource(id = R.color.purple_500)),
                 keyboardOptions = KeyboardOptions.Default.copy(
                     imeAction = ImeAction.Done
+                ),
+                keyboardActions = KeyboardActions(
+                    onSearch = {
+                        event(SearchEvent.SearchShipmentData)
+                    }
                 ),
                 placeholder = {
                     Text(
@@ -177,7 +177,7 @@ fun SearchScreen(
                 itemsIndexed(searchState.searchItems) { index, result ->
 
                     SearchResultItems(shippingItems = result)
-                    if (index < searchResults.size - 1) {
+                    if (index < searchState.searchItems.size - 1) {
                         Divider(modifier = Modifier.padding(vertical = Dimens.SmallPadding))
                     }
                 }

@@ -5,9 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.take_home_apt.data.repo.ISearchRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class SearchViewmodel @Inject constructor(
     private val searchRepository: ISearchRepository
 ) : ViewModel() {
@@ -25,7 +27,7 @@ class SearchViewmodel @Inject constructor(
                 _state.value = _state.value.copy(searchQuery = event.searchQuery)
             }
 
-            is SearchEvent.SearchNews -> {
+            is SearchEvent.SearchShipmentData -> {
                 searchShipmentData()
             }
         }
@@ -40,10 +42,9 @@ class SearchViewmodel @Inject constructor(
     }
 
     private fun searchShipmentData() {
-        viewModelScope.launch {
-            searchRepository.searchShipmentData(query = _state.value.searchQuery).collect { data ->
-                _state.value = _state.value.copy(searchItems = data)
-            }
-        }
+        val shippingItemData = searchRepository.searchShipmentData(
+            query = _state.value.searchQuery
+        ).cachedIn(viewModelScope)
+        _state.value = _state.value.copy(searchItems = shippingItemData)
     }
 }
